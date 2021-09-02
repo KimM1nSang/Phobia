@@ -14,6 +14,7 @@ public class InteractableObject : MonoBehaviour
         Switchable,
         Lookable
     }
+
     /// <summary>
     /// 인벤토리에 넣을수있는지
     /// </summary>
@@ -22,12 +23,12 @@ public class InteractableObject : MonoBehaviour
     private InteractState interactState = InteractState.Lookable;
 
     [ContextMenu("Interaction")]
-    public void Interaction()
+    public virtual void Interaction()
     {
         Debug.Log("Perform operation");
     }
 
-    public void ReadyToInteraction()
+    public virtual void ReadyToInteraction()
     {
         Debug.Log("ReadyToInteract!");
     }

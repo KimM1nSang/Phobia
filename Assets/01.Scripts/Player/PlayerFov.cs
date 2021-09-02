@@ -84,6 +84,10 @@ public class PlayerFov : MonoBehaviour
         return isView;
     }
 
+    /// <summary>
+    /// 시야에 있는 오브젝트 정보
+    /// </summary>
+    /// <returns></returns>
     public InteractableObject GetObjInview()
     {
         RaycastHit hit;

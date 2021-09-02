@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
+    //마우스로 화면 움직이게 해주는 스크립트
 
     public Transform playerBody;
     public PlayerInput input;

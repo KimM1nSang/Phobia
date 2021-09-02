@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 1481.7754, g: 1835.8867, b: 2430.4492, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 141205344}
-  input: {fileID: 0}
+  input: {fileID: 452166365}
   speed: 12
   gravity: -10
   jumpHeight: 2
@@ -844,8 +844,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontAxisName: Vertical
   rightAxisName: Horizontal
-  fireButtonName: Fire1
-  interactButtonName: Reload
 --- !u!1 &514480001
 GameObject:
   m_ObjectHideFlags: 0

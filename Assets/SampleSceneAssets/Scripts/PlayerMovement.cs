@@ -53,17 +53,17 @@ public class PlayerMovement : MonoBehaviour
     {
         float x;
         float z;
-        bool jumpPressed = false;
+        //bool jumpPressed = false;
 
 #if ENABLE_INPUT_SYSTEM
         var delta = movement.ReadValue<Vector2>();
         x = delta.x;
         z = delta.y;
-        jumpPressed = Mathf.Approximately(jump.ReadValue<float>(), 1);
+        //jumpPressed = Mathf.Approximately(jump.ReadValue<float>(), 1);
 #else
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
-        jumpPressed = Input.GetButtonDown("Jump");
+        //jumpPressed = Input.GetButtonDown("Jump");
 #endif
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -77,10 +77,10 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
 
-        if(jumpPressed && isGrounded)
+        /*if(jumpPressed && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
+        }*/
 
         velocity.y += gravity * Time.deltaTime;
 

@@ -469,6 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 141205344}
+  input: {fileID: 0}
   speed: 12
   gravity: -10
   jumpHeight: 2
@@ -588,6 +589,7 @@ GameObject:
   - component: {fileID: 452166364}
   - component: {fileID: 452166358}
   - component: {fileID: 452166362}
+  - component: {fileID: 452166365}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -607,8 +609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4202acf9324d1a64b8057f98e7042e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
   playerBody: {fileID: 141205347}
+  input: {fileID: 452166365}
 --- !u!20 &452166359
 Camera:
   m_ObjectHideFlags: 0
@@ -827,6 +829,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9edb37d20b8304d8f66fb455100999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 452166365}
+--- !u!114 &452166365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452166357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e38bc194f5728439bdefb4885cc230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontAxisName: Vertical
+  rightAxisName: Horizontal
+  fireButtonName: Fire1
+  interactButtonName: Reload
 --- !u!1 &514480001
 GameObject:
   m_ObjectHideFlags: 0

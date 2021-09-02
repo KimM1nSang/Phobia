@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     private PlayerFov fov;
-
+    public PlayerInput input;
     private void Start()
     {
         fov = GetComponent<PlayerFov>();
@@ -16,7 +16,7 @@ public class PlayerInteract : MonoBehaviour
         if (fov.IsObjInFov() && fov.IsViewObj())
         {
             fov.GetObjInview().ReadyToInteraction();
-            if (Input.GetMouseButtonDown(0))
+            if (input.interact)
             {
                 Debug.Log(fov.GetObjInview().objectName);
                 fov.GetObjInview().Interaction();

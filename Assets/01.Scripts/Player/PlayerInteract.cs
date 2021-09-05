@@ -20,6 +20,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 Debug.Log(fov.GetObjInview().objectName);
                 fov.GetObjInview().Interaction();
+
             }
         }
     }

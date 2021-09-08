@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
     public string frontAxisName = "Vertical";
     public string rightAxisName = "Horizontal";
+    public KeyCode interactKey = KeyCode.E;
 
     public float frontMove { get; private set; }
     public float rightMove { get; private set; }
@@ -19,7 +20,7 @@ public class PlayerInput : MonoBehaviour
     {
         frontMove = Input.GetAxis(frontAxisName);
         rightMove = Input.GetAxis(rightAxisName);
-        interact = Input.GetMouseButtonDown(0);
+        interact = Input.GetKey(interactKey);
         mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
     using UnityEngine;
@@ -5,32 +6,55 @@ using System.Collections.Generic;
 public class InteractableObject : MonoBehaviour
 {
     public string objectName;
+    [SerializeField]
+    private Transform intercatIconPos;
+    [SerializeField]
+    private GameObject intercatIcon;
 
-    /// <summary>
-    /// Switchable : 똑딱 할 수 있는지 || Lookable : 구경 할 수 있는지
-    /// </summary>
-    private enum InteractState
+    public bool interactable { get; set; } = true;
+
+    public bool pickable { get; set; } = true;
+
+    private void Awake()
     {
-        Switchable,
-        Lookable
+        intercatIcon.transform.position = intercatIconPos.position;
+        IconActive(false);
     }
-
-    /// <summary>
-    /// 인벤토리에 넣을수있는지
-    /// </summary>
-    private bool isPickable;
-
-    private InteractState interactState = InteractState.Lookable;
 
     [ContextMenu("Interaction")]
     public virtual void Interaction()
     {
-        Debug.Log("Perform operation");
+        if(interactable)
+        {
+            if (pickable)
+            {
+                Pick();
+            }
+            else
+            {
+                Switch();
+            }
+        }
     }
 
+    public virtual void Pick()
+    {
+        Debug.Log("Pick");
+    }
+
+    public virtual void Switch()
+    {
+        Debug.Log("Switch");
+
+    }
     public virtual void ReadyToInteraction()
     {
         Debug.Log("ReadyToInteract!");
+    }
+
+    public void IconActive(bool isActive)
+    {
+        intercatIcon.SetActive(isActive);
     }
 
 }

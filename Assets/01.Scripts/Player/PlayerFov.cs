@@ -101,4 +101,23 @@ public class PlayerFov : MonoBehaviour
             return null;
         }
     }
+    /// <summary>
+    /// 시야범위 안에 있는 오브젝트 정보
+    /// </summary>
+    /// <returns></returns>
+    public Collider[] GetObjInFov()
+    {
+        colls = Physics.OverlapSphere(transform.position, viewRange, 1 << interactableLayer);
+        if (colls.Length >= 1)
+        {
+
+            Vector3 dir = GetDir();
+
+            if (Vector3.Angle(transform.forward, dir) < viewAngle * 0.5f)
+            {
+                return colls;
+            }
+        }
+        return null;
+    }
 }

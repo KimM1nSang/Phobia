@@ -6,6 +6,8 @@ public class PlayerInteract : MonoBehaviour
 {
     private PlayerFov fov;
     public PlayerInput input;
+
+    private InteractableObject interactingObj;
     private void Start()
     {
         fov = GetComponent<PlayerFov>();
@@ -13,15 +15,28 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fov.IsObjInFov() && fov.IsViewObj())
+        if (fov.IsObjInFov())
         {
-            fov.GetObjInview().ReadyToInteraction();
-            if (input.interact)
+            interactingObj = fov.GetObjInview();
+            if (fov.IsViewObj())
             {
-                Debug.Log(fov.GetObjInview().objectName);
-                fov.GetObjInview().Interaction();
-
+                interactingObj.IconActive(true);
+                interactingObj.ReadyToInteraction();
+                if (input.interact)
+                {
+                    Debug.Log(interactingObj.objectName);
+                    interactingObj.Interaction();
+                }
             }
+            else
+            {
+                foreach (var item in fov.GetObjInFov())
+                {
+                    item.GetComponent<InteractableObject>().IconActive(false);
+                }
+            }
+
         }
     }
+
 }

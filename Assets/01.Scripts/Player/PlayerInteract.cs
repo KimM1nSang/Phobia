@@ -21,7 +21,6 @@ public class PlayerInteract : MonoBehaviour
             if (fov.IsViewObj())
             {
                 interactingObj.IconActive(true);
-                interactingObj.ReadyToInteraction();
                 if (input.interact)
                 {
                     Debug.Log(interactingObj.objectName);

@@ -20,6 +20,8 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.canMove) return;
+
         float x = input.rightMove;
         float z = input.frontMove;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);

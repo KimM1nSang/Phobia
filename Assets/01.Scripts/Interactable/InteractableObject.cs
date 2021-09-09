@@ -13,8 +13,6 @@ public class InteractableObject : MonoBehaviour
 
     public bool interactable { get; set; } = true;
 
-    public bool pickable { get; set; } = true;
-
     private void Awake()
     {
         intercatIcon.transform.position = intercatIconPos.position;
@@ -24,37 +22,12 @@ public class InteractableObject : MonoBehaviour
     [ContextMenu("Interaction")]
     public virtual void Interaction()
     {
-        if(interactable)
-        {
-            if (pickable)
-            {
-                Pick();
-            }
-            else
-            {
-                Switch();
-            }
-        }
-    }
-
-    public virtual void Pick()
-    {
-        Debug.Log("Pick");
-    }
-
-    public virtual void Switch()
-    {
-        Debug.Log("Switch");
-
-    }
-    public virtual void ReadyToInteraction()
-    {
-        Debug.Log("ReadyToInteract!");
+        if (!interactable) return;
+        Debug.Log("Interact");
     }
 
     public void IconActive(bool isActive)
     {
         intercatIcon.SetActive(isActive);
     }
-
 }

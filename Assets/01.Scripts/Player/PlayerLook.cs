@@ -20,6 +20,8 @@ public class PlayerLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.instance.canLook) return;
+
         xRotation -= input.mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 

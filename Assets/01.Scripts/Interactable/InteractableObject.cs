@@ -11,12 +11,17 @@ public class InteractableObject : MonoBehaviour
     [SerializeField]
     private GameObject intercatIcon;
 
+    private GameManager gameManager;
+    private PlayerInput input;
+
     public bool interactable { get; set; } = true;
 
     private void Awake()
     {
         intercatIcon.transform.position = intercatIconPos.position;
         IconActive(false);
+        input = PlayerInput.instance;
+        gameManager = GameManager.instance;
     }
 
     [ContextMenu("Interaction")]

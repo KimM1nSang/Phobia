@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public CharacterController controller;
-    public PlayerInput input;
     public float speed = 12f;
     public float gravity = -10f;
     public float jumpHeight = 2f;
@@ -14,10 +13,15 @@ public class PlayerMove : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    private PlayerInput input;
 
     Vector3 velocity;
     bool isGrounded;
 
+    private void Start()
+    {
+        input = PlayerInput.instance;
+    }
     void Update()
     {
         if (!GameManager.instance.canMove) return;

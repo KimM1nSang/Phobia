@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     private PlayerFov fov;
-    public PlayerInput input;
+    private PlayerInput input;
 
     private InteractableObject interactingObj;
     private void Start()
     {
         fov = GetComponent<PlayerFov>();
+        input = PlayerInput.instance;
     }
     // Update is called once per frame
     void Update()

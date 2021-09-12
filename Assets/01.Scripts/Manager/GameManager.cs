@@ -6,11 +6,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public bool canMove = false;
-    public bool canLook = false;
+    public bool canMove = true;
+    public bool canLook = true;
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Debug.LogError("이미 게임매니저가 존재합니다");
+        }
         instance = this;
     }
 }

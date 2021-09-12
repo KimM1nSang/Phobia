@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    public static PlayerInput instance;
+
     public string frontAxisName = "Vertical";
     public string rightAxisName = "Horizontal";
     public KeyCode interactKey = KeyCode.E;
@@ -15,6 +17,15 @@ public class PlayerInput : MonoBehaviour
     public float mouseY { get; private set; }
 
     public float mouseSensitivity { get; set; } = 100;
+
+    private void Awake()
+    {
+        if(instance != null)
+        {
+            Debug.LogError("이미 플레이어 인풋이 존재합니다");
+        }
+        instance = this;
+    }
 
     void Update()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public PlayerInput input;
+    private PlayerInput input;
     public Transform viewPoint;
 
     private float time;

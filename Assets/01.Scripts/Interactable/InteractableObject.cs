@@ -7,21 +7,16 @@ public class InteractableObject : MonoBehaviour
 {
     public string objectName;
     [SerializeField]
-    private Transform intercatIconPos;
+    protected Transform intercatIconPos;
     [SerializeField]
-    private GameObject intercatIcon;
-
-    private GameManager gameManager;
-    private PlayerInput input;
+    protected GameObject intercatIcon;
 
     public bool interactable { get; set; } = true;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         intercatIcon.transform.position = intercatIconPos.position;
         IconActive(false);
-        input = PlayerInput.instance;
-        gameManager = GameManager.instance;
     }
 
     [ContextMenu("Interaction")]

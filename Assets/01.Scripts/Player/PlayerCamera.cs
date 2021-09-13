@@ -21,7 +21,7 @@ public class PlayerCamera : MonoBehaviour
     void Update()
     {
         
-        if (input.frontMove != 0 || input.rightMove !=0)
+        if ((input.frontMove != 0 || input.rightMove !=0)&&GameManager.instance.canMove)
         {
             time += Time.deltaTime * 10;
             yMove = Mathf.Sin(time)*interval;

@@ -11,7 +11,7 @@ public class InteractableObject : MonoBehaviour
     [SerializeField]
     protected GameObject intercatIcon;
 
-    public bool interactable { get; set; } = true;
+    public bool isInteractable { get; set; } = false;
 
     protected virtual void Awake()
     {
@@ -22,7 +22,7 @@ public class InteractableObject : MonoBehaviour
     [ContextMenu("Interaction")]
     public virtual void Interaction()
     {
-        if (!interactable) return;
+        if (!isInteractable) return;
         Debug.Log("Interact");
     }
 
@@ -30,4 +30,8 @@ public class InteractableObject : MonoBehaviour
     {
         intercatIcon.SetActive(isActive);
     }
+	protected virtual void Update()
+	{
+        if (!isInteractable) return;
+	}
 }

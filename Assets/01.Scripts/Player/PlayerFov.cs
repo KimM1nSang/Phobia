@@ -50,6 +50,29 @@ public class PlayerFov : MonoBehaviour
         }
         return isTrace;
     }
+    /// <summary>
+    /// 근처에 오브젝트가 있는지 없는지 체크
+    /// </summary>
+    /// <returns></returns>
+    public bool IsObjInAround()
+    {
+        bool isTrace = false;
+        colls = Physics.OverlapSphere(transform.position, viewRange, 1 << interactableLayer);
+        if (colls.Length >= 1)
+        {
+            isTrace = true;
+        }
+        return isTrace;
+    }
+    public Collider[] GetObjInAround()
+    {
+        colls = Physics.OverlapSphere(transform.position, viewRange, 1 << interactableLayer);
+        if (colls.Length >= 1)
+        {
+            return colls;
+        }
+        return null;
+    }
     private Vector3 GetDir()
     {
         int n = 0;

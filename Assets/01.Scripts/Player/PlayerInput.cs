@@ -14,6 +14,7 @@ public class PlayerInput : MonoBehaviour
     public float frontMove { get; private set; }
     public float rightMove { get; private set; }
     public bool interact { get; private set; }
+    public bool interactUp { get; private set; }
     public bool objectDrop { get; private set; }
     public float mouseX { get; private set; }
     public float mouseY { get; private set; }
@@ -34,6 +35,7 @@ public class PlayerInput : MonoBehaviour
         frontMove = Input.GetAxis(frontAxisName);
         rightMove = Input.GetAxis(rightAxisName);
         interact = Input.GetKeyDown(interactKey);
+        interactUp = Input.GetKeyUp(interactKey);
         objectDrop = Input.GetKeyDown(dropKey);
         mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;

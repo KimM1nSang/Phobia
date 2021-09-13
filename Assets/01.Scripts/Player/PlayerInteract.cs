@@ -15,7 +15,14 @@ public class PlayerInteract : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
+    {   
+        if (fov.IsObjInAround())
+        {
+			foreach (var item in fov.GetObjInAround())
+			{
+                item.GetComponent<InteractableObject>().isInteractable = true;
+			}
+        }
         if (fov.IsObjInFov())
         {
             interactingObj = fov.GetObjInview();
@@ -26,6 +33,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     Debug.Log(interactingObj.objectName);
                     interactingObj.Interaction();
+                    
                 }
             }
             else

@@ -29,33 +29,54 @@ public class PlayerInventory : MonoBehaviour
     {
         if(grabedObject != null)
         {
+            if(grabState == GrabObjectState.OnForward)
+            {
+                grabedObject.transform.RotateAround(Vector3.up, -PlayerInput.instance.mouseX * Mathf.Deg2Rad);
+                grabedObject.transform.RotateAround(Vector3.right, PlayerInput.instance.mouseY * Mathf.Deg2Rad);
+                //grabedObject.transform.rotation = Quaternion.Euler(grabedObject.transform.rotation.eulerAngles.y + PlayerInput.instance.mouseY, grabedObject.transform.rotation.eulerAngles.y + PlayerInput.instance.mouseY,0);
+            }
             InteractableGrabObject grabObj = grabedObject.GetComponent<InteractableGrabObject>();
             if (PlayerInput.instance.interact)
             {
                 grabedObject.transform.parent = grabObjectHandTransform;
+
                 grabObj.GravityActive(false);
-                if (grabState == GrabObjectState.OnHand)
-                {
-                    grabState = GrabObjectState.OnForward;
 
-                    grabedObject.transform.position = grabObjectForwardTransform.position;
-
-                    GameManager.instance.canMove = GameManager.instance.canLook = false;
-                }
-                else
+                switch (grabState)
                 {
-                    grabState = GrabObjectState.OnHand;
-                    
-                    grabedObject.transform.position = grabObjectHandTransform.position;
-                    
-                    GameManager.instance.canMove = GameManager.instance.canLook = true;
+                    case GrabObjectState.OnHand:
+
+                        grabState = GrabObjectState.OnForward;
+
+                        grabedObject.transform.rotation = grabedObject.transform.parent.rotation;
+                        grabedObject.transform.LookAt(transform.position);
+                        grabedObject.transform.position = grabObjectForwardTransform.position;
+
+                        GameManager.instance.canMove = false;
+                        GameManager.instance.canLook = false;
+                        break;
+                    case GrabObjectState.OnForward:
+
+                        grabState = GrabObjectState.OnHand;
+
+                        grabedObject.transform.rotation = grabedObject.transform.parent.rotation;
+                        grabedObject.transform.LookAt(transform.position);
+
+                        grabedObject.transform.position = grabObjectHandTransform.position;
+
+                        GameManager.instance.canMove = true;
+                        GameManager.instance.canLook = true;
+                        break;
+                    default:
+                        break;
                 }
             }
             if(PlayerInput.instance.objectDrop)
             {
                 grabObj.GravityActive(true);
                 grabState = GrabObjectState.OnForward;
-                GameManager.instance.canMove = GameManager.instance.canLook = true;
+                GameManager.instance.canMove = true;
+                GameManager.instance.canLook = true;
                 grabedObject.GetComponent<InteractableGrabObject>().ObjectDrop();
                 grabedObject = null;
             }

@@ -48,9 +48,9 @@ public class InteractableDragObject : InteractableObject
 			GameManager.instance.canLook = true;
 		}
 	}
-	void OnDrawGizmos()
+/*	void OnDrawGizmos()
 	{
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireCube(transform.position + new Vector3(0,transform.position.y/2,0), meshSize.size);
-	}
+	}*/
 }

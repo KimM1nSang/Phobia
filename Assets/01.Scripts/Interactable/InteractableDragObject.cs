@@ -23,25 +23,21 @@ public class InteractableDragObject : InteractableObject
 	protected override void Update()
 	{
 		base.Update();
-		Debug.Log("公具龋");
-		if(canRotate && !PlayerInput.instance.interactUp)
-			transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + PlayerInput.instance.mouseY, 0, 90), 0);
-		if (Physics.OverlapBox(transform.position, meshSize.size, Quaternion.identity, whatIsPlayer) != null)
-		{
-			Debug.Log(Physics.OverlapBox(transform.position * transform.position.y, meshSize.size, Quaternion.identity, whatIsPlayer).Length);
-		}
+			  //Debug.Log("公具龋");
+			  //if(canRotate && !PlayerInput.instance.interactUp)
+			  //	transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + PlayerInput.instance.mouseY, 0, 90), 0);
 		if (canRotate && !PlayerInput.instance.interactUp)
 		{
-			Vector3 dir = (GameManager.instance.player.transform.position - transform.position).normalized;
-
-			if (Vector3.Angle(transform.forward, dir) > 90f)
+			Vector3 dir = (GameManager.instance.player.transform.position - transform.parent.parent.position).normalized;
+			Debug.Log(Vector3.Angle(transform.parent.parent.forward, dir));
+			if (Vector3.Angle(transform.parent.parent.forward, dir) > 90f)
 			{
-				Debug.Log("A");
+				//Debug.Log("菊");
 				transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + -PlayerInput.instance.mouseY, 0, 90), 0);
 			}
 			else
 			{
-				Debug.Log(Vector3.Angle(transform.forward, dir));
+				Debug.Log(Vector3.Angle(transform.parent.parent.forward, dir));
 				transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + PlayerInput.instance.mouseY, 0, 90), 0);
 			}
 		}

@@ -32,7 +32,7 @@ public class PlayerInventory : MonoBehaviour
             if(grabState == GrabObjectState.OnForward)
             {
                 grabedObject.transform.RotateAround(Vector3.up, -PlayerInput.instance.mouseX * Mathf.Deg2Rad);
-                grabedObject.transform.RotateAround(Vector3.right, PlayerInput.instance.mouseY * Mathf.Deg2Rad);
+                grabedObject.transform.RotateAround(grabObjectForwardTransform.right, PlayerInput.instance.mouseY * Mathf.Deg2Rad);
                 //grabedObject.transform.rotation = Quaternion.Euler(grabedObject.transform.rotation.eulerAngles.y + PlayerInput.instance.mouseY, grabedObject.transform.rotation.eulerAngles.y + PlayerInput.instance.mouseY,0);
             }
             InteractableGrabObject grabObj = grabedObject.GetComponent<InteractableGrabObject>();

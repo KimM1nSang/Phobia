@@ -582,6 +582,7 @@ MonoBehaviour:
   objectName: dragable
   intercatIconPos: {fileID: 1492963825}
   intercatIcon: {fileID: 2055663581}
+  doorDistance: 0
 --- !u!65 &358338893
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1412,6 +1413,7 @@ MonoBehaviour:
   objectName: dragable
   intercatIconPos: {fileID: 480396957}
   intercatIcon: {fileID: 1493468172}
+  doorDistance: 0
 --- !u!65 &1067710682
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3682,7 +3684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986913610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.01, y: -2.53, z: 5.86}
+  m_LocalPosition: {x: 3.17, y: -2.53, z: 5.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 342520978}

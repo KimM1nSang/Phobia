@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class InteractableDragObject : InteractableObject
 {
+	private int doorDir = 1;
 	private bool canRotate = false;
+	public float doorDistance;
+
 
 	protected override void Awake()
 	{
@@ -19,36 +22,36 @@ public class InteractableDragObject : InteractableObject
 	protected override void Update()
 	{
 		base.Update();
-		if (IsViewPlayer())
+
+		float distance = (GameManager.instance.player.transform.position - transform.position).magnitude;
+		Vector3 dir = (GameManager.instance.player.transform.position - transform.position).normalized;
+
+		if (distance < doorDistance)
 		{
 			Debug.Log("N");
 		}
-			  //
-			  //if(canRotate && !PlayerInput.instance.interactUp)
-			  //	transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + PlayerInput.instance.mouseY, 0, 90), 0);
-			if (canRotate && !PlayerInput.instance.interactUp)
+		
+		//문이 일정 각도로 이상으로 열리면 버벅 거리는거 막기위한 코드
+		if (!PlayerInput.instance.interact)
 		{
-
-			Vector3 dir = (GameManager.instance.player.transform.position - transform.parent.parent.position).normalized;
-			Debug.Log(dir);
-
-			//Debug.Log(Vector3.Angle(transform.parent.parent.forward, dir));
-			if (Vector3.Angle(transform.parent.parent.forward, dir) > 90f)
+			if (Vector3.Angle(transform.forward, dir) > 90f)
 			{
-				//Debug.Log("앞");
-				if (!(IsViewPlayer() && PlayerInput.instance.mouseY < 0))
-				{
-					transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + -PlayerInput.instance.mouseY, 0, 90), 0);
-				}
+				doorDir = -1;
 			}
-			else
+			else if (Vector3.Angle(transform.forward, dir) < 90f)
 			{
-				if (!(IsViewPlayer() && PlayerInput.instance.mouseY < 0))
-				{
-					transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + PlayerInput.instance.mouseY, 0, 90), 0);
-				}
-				
+				doorDir = 1;
 			}
+		}
+
+		if (canRotate && !PlayerInput.instance.interactUp)
+		{
+			//문과 플레이어 거리가 일정량 이상 가까워 지면 플레이어 쪽으로 문을 못 당기게 막음
+			if (!(distance < doorDistance && PlayerInput.instance.mouseY < 0))
+			{
+				transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + doorDir * PlayerInput.instance.mouseY, 0, 90), 0);
+			}
+
 		}
 			
 		if (PlayerInput.instance.interactUp&& canRotate)
@@ -57,22 +60,4 @@ public class InteractableDragObject : InteractableObject
 			GameManager.instance.canLook = true;
 		}
 	}
-	public bool IsViewPlayer()
-	{
-		bool isView = false;
-		RaycastHit hit;
-		Vector3 dir = (GameManager.instance.player.transform.position - transform.position).normalized;
-		Debug.DrawRay(transform.position, dir, Color.red, 0.1f);
-		if (Physics.Raycast(transform.position, dir, out hit, 0.7f))
-		{
-			isView = hit.collider.gameObject.CompareTag("Player");
-		}
-
-		return isView;
-	}
-	//void OnDrawGizmos()
-	//{
-	//	Gizmos.color = Color.red;
-	//	Gizmos.DrawWireCube(transform.position + new Vector3(0,transform.position.y/2,0), meshSize.size);
-	//}
 }

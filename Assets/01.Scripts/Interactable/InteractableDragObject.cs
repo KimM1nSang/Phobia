@@ -32,7 +32,7 @@ public class InteractableDragObject : InteractableObject
 		}
 		
 		//문이 일정 각도로 이상으로 열리면 버벅 거리는거 막기위한 코드
-		if (!PlayerInput.instance.interact)
+		if (PlayerInput.instance.interact)
 		{
 			if (Vector3.Angle(transform.forward, dir) > 90f)
 			{

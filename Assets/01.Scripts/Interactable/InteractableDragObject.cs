@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class InteractableDragObject : InteractableObject
 {
+	private int doorDir = 1;
 	private bool canRotate = false;
-	private LayerMask whatIsPlayer;
-	private MeshRenderer mesh;
-	private Bounds meshSize;
+	public float doorDistance;
+
+
 	protected override void Awake()
 	{
 		base.Awake();
-		mesh = GetComponent<MeshRenderer>();
-		meshSize = mesh.bounds;
 	}
 	public override void Interaction()
 	{
@@ -23,34 +22,45 @@ public class InteractableDragObject : InteractableObject
 	protected override void Update()
 	{
 		base.Update();
-			  //Debug.Log("무야호");
-			  //if(canRotate && !PlayerInput.instance.interactUp)
-			  //	transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + PlayerInput.instance.mouseY, 0, 90), 0);
-		if (canRotate && !PlayerInput.instance.interactUp)
+
+		float distance = (GameManager.instance.player.transform.position - transform.position).magnitude;
+		Vector3 dir = (GameManager.instance.player.transform.position - transform.position).normalized;
+
+		if (distance < doorDistance)
 		{
-			Vector3 dir = (GameManager.instance.player.transform.position - transform.parent.parent.position).normalized;
-			Debug.Log(Vector3.Angle(transform.parent.parent.forward, dir));
-			if (Vector3.Angle(transform.parent.parent.forward, dir) > 90f)
+			Debug.Log("N");
+		}
+		
+		//문이 일정 각도로 이상으로 열리면 버벅 거리는거 막기위한 코드
+		if (PlayerInput.instance.interact)
+		{
+			if (Vector3.Angle(transform.forward, dir) > 90f)
 			{
-				//Debug.Log("앞");
-				transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + -PlayerInput.instance.mouseY, 0, 90), 0);
+				doorDir = -1;
 			}
-			else
+			else if (Vector3.Angle(transform.forward, dir) < 90f)
 			{
-				Debug.Log(Vector3.Angle(transform.parent.parent.forward, dir));
-				transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + PlayerInput.instance.mouseY, 0, 90), 0);
+				doorDir = 1;
 			}
 		}
 
+<<<<<<< HEAD
+=======
+		if (canRotate && !PlayerInput.instance.interactUp)
+		{
+			//문과 플레이어 거리가 일정량 이상 가까워 지면 플레이어 쪽으로 문을 못 당기게 막음
+			if (!(distance < doorDistance && PlayerInput.instance.mouseY < 0))
+			{
+				transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + doorDir * PlayerInput.instance.mouseY, 0, 90), 0);
+			}
+
+		}
+			
+>>>>>>> b731b4514695e1cb152dc9f8534b1fd319928266
 		if (PlayerInput.instance.interactUp&& canRotate)
 		{
 			canRotate = false;
 			GameManager.instance.canLook = true;
 		}
 	}
-/*	void OnDrawGizmos()
-	{
-		Gizmos.color = Color.red;
-		Gizmos.DrawWireCube(transform.position + new Vector3(0,transform.position.y/2,0), meshSize.size);
-	}*/
 }

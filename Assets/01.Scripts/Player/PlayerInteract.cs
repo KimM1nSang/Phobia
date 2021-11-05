@@ -33,7 +33,6 @@ public class PlayerInteract : MonoBehaviour
                 {
                     Debug.Log(interactingObj.objectName);
                     interactingObj.Interaction();
-                    
                 }
             }
             else

@@ -143,4 +143,9 @@ public class PlayerFov : MonoBehaviour
         }
         return null;
     }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, viewRange);
+    }
 }

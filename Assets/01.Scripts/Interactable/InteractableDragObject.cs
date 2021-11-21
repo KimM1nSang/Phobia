@@ -44,8 +44,6 @@ public class InteractableDragObject : InteractableObject
 			}
 		}
 
-<<<<<<< HEAD
-=======
 		if (canRotate && !PlayerInput.instance.interactUp)
 		{
 			//문과 플레이어 거리가 일정량 이상 가까워 지면 플레이어 쪽으로 문을 못 당기게 막음
@@ -56,7 +54,6 @@ public class InteractableDragObject : InteractableObject
 
 		}
 			
->>>>>>> b731b4514695e1cb152dc9f8534b1fd319928266
 		if (PlayerInput.instance.interactUp&& canRotate)
 		{
 			canRotate = false;

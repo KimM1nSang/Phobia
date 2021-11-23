@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5965a9da549a094db512cd03e94cb75, type: 3}
-  m_Name: CallingDad
+  m_Name: 2_DadLine-1
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 354c37cd61ec24bbcbbc7921d0a71bc1, type: 3}
-  subtitle: "\uC544\uBE60!\\n\uC774\uCABD\uBD10\uC694\u2026!"
+  clip: {fileID: 0}
+  subtitle: "\uC5B4\uD6C4\u2026\uAC11\uC790\uAE30 \uAE30\uB984\uC774 \uC624\uB9C1\uB098\uB0D0\u2026"

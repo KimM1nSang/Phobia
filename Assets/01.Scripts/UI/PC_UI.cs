@@ -10,6 +10,7 @@ public class PC_UI : MonoBehaviour
     private RectTransform subtitleBoxRect;
     private RectTransform subtitleRect;
 
+    private bool isPlaying= false;
     public static PC_UI Instance { get; set; }
 
     private void Awake()
@@ -30,8 +31,17 @@ public class PC_UI : MonoBehaviour
         ClearSubtitle();
     }
 
+    #region 자막
+
+    /// <summary>
+    /// 자막 설정
+    /// </summary>
+    /// <param name="subtitle">자막 내용</param>
+    /// <param name="delay">자막 없어지기 까지의 딜레이</param>
     public void SetSubtitle(string subtitle,float delay)
     {
+        ClearSubtitle();
+        isPlaying = true;
         subtitleText.text = subtitle;
 
         string[] splitSubtitle = subtitle.Split('\n');
@@ -47,21 +57,37 @@ public class PC_UI : MonoBehaviour
 
         StartCoroutine(ClearAfterSeconds(delay));
     }
-
+    /// <summary>
+    /// 자막 지우기
+    /// </summary>
     public void ClearSubtitle()
     {
         subtitleText.text = "";
         ClearSubtitleBox();
     }
+    /// <summary>
+    /// 자막 박스 지우기
+    /// </summary>
     public void ClearSubtitleBox()
     {
         subtitleBoxRect.sizeDelta = new Vector2(0,0);
     }
+
     private IEnumerator ClearAfterSeconds(float delay)
     {
+        isPlaying = false;
         yield return new WaitForSeconds(delay);
-        ClearSubtitle();
+        if (!isPlaying)
+        {
+            ClearSubtitle();
+        }
     }
+
+    /// <summary>
+    /// 캔버스 속 메세지의 길이 구하기
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
     public int CalculateWidthOfMessage(string message)
     {
         int totalLength = 0;
@@ -79,4 +105,5 @@ public class PC_UI : MonoBehaviour
         }
         return totalLength;
     }
+    #endregion
 }

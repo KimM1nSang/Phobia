@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class InteractableObject : MonoBehaviour
 {
-    public AudioObject audioObject;
     public string objectName;
     [SerializeField]
     protected Transform intercatIconPos;
@@ -24,8 +23,6 @@ public class InteractableObject : MonoBehaviour
     public virtual void Interaction()
     {
         if (!isInteractable) return;
-        if (audioObject != null)
-            Vocals.Instance.Say(audioObject);
     }
 
     public void IconActive(bool isActive)

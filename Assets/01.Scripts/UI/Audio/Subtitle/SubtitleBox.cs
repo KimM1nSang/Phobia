@@ -16,6 +16,24 @@ public class SubtitleBox : MonoBehaviour
     void Update()
     {
         string[] subtitleText = subtitle.text.Split('\n');
-        rect.sizeDelta = new Vector2(subtitle.text.Length == 1 ? 79.9999f : subtitle.text.Length > 1 ? (79.9999f) +( (subtitle.text.Length -1 )* 49.9999f) : 0, subtitleText.Length > 1 ? 150 : 100);
+        rect.sizeDelta = new Vector2(subtitle.text.Length > 0 ? CalculateWidthOfMessage(subtitle.text) + 30 : 0, subtitleText.Length > 1 ? 150 : 100);
+    }
+
+    public int CalculateWidthOfMessage(string message)
+    {
+        int totalLength = 0;
+
+        Font myFont = subtitle.font;  //chatText is my Text component
+        //CharacterInfo characterInfo = new CharacterInfo();
+
+        char[] arr = message.ToCharArray();
+
+        foreach (char c in arr)
+        {
+            myFont.RequestCharactersInTexture(c.ToString(), subtitle.fontSize, subtitle.fontStyle);
+            myFont.GetCharacterInfo(c, out CharacterInfo characterInfo, subtitle.fontSize);
+            totalLength += characterInfo.advance;
+        }
+        return totalLength;
     }
 }

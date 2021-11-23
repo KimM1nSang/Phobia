@@ -6,5 +6,6 @@ using UnityEngine;
 public class AudioObject : ScriptableObject
 {
     public AudioClip clip;
+    [TextArea]
     public string subtitle;
 }

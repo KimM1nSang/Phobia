@@ -28,7 +28,8 @@ public class Vocals : MonoBehaviour
     public void Say(AudioObject clip)
     {
         if (source.isPlaying)
-            source.Stop();
+            return;
+            //source.Stop();
 
         source.PlayOneShot(clip.clip);
 

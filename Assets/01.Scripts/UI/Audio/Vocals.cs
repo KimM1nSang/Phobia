@@ -31,11 +31,19 @@ public class Vocals : MonoBehaviour
     /// <param name="clip">오디오 오브젝트</param>
     public void Say(AudioObject clip)
     {
+        StartCoroutine(SayAfterSecond(clip));   
+    }
+    private IEnumerator SayAfterSecond(AudioObject clip)
+    {
+        PC_UI.Instance.ClearSubtitle();
         if (source.isPlaying)
             source.Stop();
 
-        source.PlayOneShot(clip.clip);
+        yield return new WaitForSeconds(0.2f);
 
-        PC_UI.Instance.SetSubtitle(clip.subtitle, clip.clip != null ? clip.clip.length : 6);
+        if (clip.clip != null)
+            source.PlayOneShot(clip.clip);
+
+        PC_UI.Instance.SetSubtitle(clip.subtitle, clip.clip != null ? clip.clip.length : clip.subtitle.Length * 0.4f);
     }
 }

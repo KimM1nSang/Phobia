@@ -10,7 +10,8 @@ public class PC_UI : MonoBehaviour
     private RectTransform subtitleBoxRect;
     private RectTransform subtitleRect;
 
-    private bool isPlaying= false;
+    private bool isPlaying = false;
+
     public static PC_UI Instance { get; set; }
 
     private void Awake()
@@ -40,8 +41,6 @@ public class PC_UI : MonoBehaviour
     /// <param name="delay">자막 없어지기 까지의 딜레이</param>
     public void SetSubtitle(string subtitle,float delay)
     {
-        ClearSubtitle();
-        isPlaying = true;
         subtitleText.text = subtitle;
 
         string[] splitSubtitle = subtitle.Split('\n');
@@ -55,7 +54,8 @@ public class PC_UI : MonoBehaviour
         }
         subtitleBoxRect.sizeDelta = new Vector2(subtitle.Length > 0 ? CalculateWidthOfMessage(MostLongSubtitle) + (subtitleRect.offsetMin.x * 2) : 0, 100 + (splitSubtitle.Length - 1) * 50);
 
-        StartCoroutine(ClearAfterSeconds(delay));
+        if (!isPlaying)
+            StartCoroutine(ClearAfterSeconds(delay));
     }
     /// <summary>
     /// 자막 지우기
@@ -75,12 +75,10 @@ public class PC_UI : MonoBehaviour
 
     private IEnumerator ClearAfterSeconds(float delay)
     {
-        isPlaying = false;
+        isPlaying = true;
         yield return new WaitForSeconds(delay);
-        if (!isPlaying)
-        {
-            ClearSubtitle();
-        }
+        ClearSubtitle();
+        isPlaying = false;
     }
 
     /// <summary>

@@ -13,19 +13,24 @@ public class TitleUIManager : MonoBehaviour
 
     private float cam_Speed = 0.5f;
 
-    [SerializeField] private bool is_Cam_Moving = false;
+    private bool is_Cam_Moving = false;
 
     [SerializeField] private Button GameStartbtn;
     [SerializeField] private Button Optionbtn;
+    
     [SerializeField] private Button Exitbtn;
+    [SerializeField] private Button ReallyExitbtn;
+
     [SerializeField] private Button NewGamebtn;
     [SerializeField] private Button LoadGamebtn;
 
     [SerializeField] private GameObject OptionPanel;
     [SerializeField] private GameObject GameStartPanel;
+    [SerializeField] private GameObject GameExitPanel;
 
     [SerializeField] private Transform OptionTransform;
     [SerializeField] private Transform GameStartTransform;
+    [SerializeField] private Transform ExitPosition;
 
     void Start()
     {
@@ -38,10 +43,16 @@ public class TitleUIManager : MonoBehaviour
         GameStartPanel.SetActive(false);
 
         GameStartbtn.onClick.AddListener(OnActiveGameStart);
+       
         Optionbtn.onClick.AddListener(OnActiveOption);
-        Exitbtn.onClick.AddListener(OnQuitGame);
+        
+        Exitbtn.onClick.AddListener(OnActiveGameExit);
+        ReallyExitbtn.onClick.AddListener(QuitGame);
+
         NewGamebtn.onClick.AddListener(OnNewGame);
         LoadGamebtn.onClick.AddListener(OnLoadGame);
+
+        PC_UI.Instance.SetSubtitle("ESC : 뒤로가기", 3.0f);
     }
 
     private void Update()
@@ -52,6 +63,9 @@ public class TitleUIManager : MonoBehaviour
             OptionPanel.SetActive(false);
             GameStartbtn.gameObject.SetActive(true);
             GameStartPanel.SetActive(false);
+            Exitbtn.gameObject.SetActive(true);
+            GameExitPanel.SetActive(false);
+
             CamMoving(firstPosition, firstquaternion);
         }
     }
@@ -73,6 +87,17 @@ public class TitleUIManager : MonoBehaviour
 
         CamMoving(GameStartTransform.position, GameStartTransform.rotation);
     }
+
+    private void OnActiveGameExit()
+    {
+        if (is_Cam_Moving) return;
+
+        Exitbtn.gameObject.SetActive(GameExitPanel.activeSelf);
+        GameExitPanel.SetActive(!GameExitPanel.activeSelf);
+        CamMoving(ExitPosition.position, ExitPosition.rotation);
+
+    }
+
     private void CamMoving(Vector3 transform,Quaternion quaternion)
     {
         if (is_Cam_Moving) return;
@@ -90,7 +115,7 @@ public class TitleUIManager : MonoBehaviour
         Debug.Log("NewGame!");
         LoadSceneManager.LoadScene("HighwayScene");
     }
-    private void OnQuitGame()
+    private void QuitGame()
     {
         Debug.Log("QuitGame!");
         Application.Quit();

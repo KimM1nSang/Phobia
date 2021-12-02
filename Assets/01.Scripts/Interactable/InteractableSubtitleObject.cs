@@ -8,7 +8,14 @@ public class InteractableSubtitleObject : InteractableObject
     public override void Interaction()
     {
         base.Interaction();
-        if (audioObject != null)
-            Vocals.Instance.Say(audioObject);
+        if(GetComponent<StorySubtitleProcess>() != null)
+        {
+            GetComponent<StorySubtitleProcess>().StoryProcess();
+        }
+        else
+        {
+            if (audioObject != null)
+                Vocals.Instance.Say(audioObject);
+        }
     }
 }

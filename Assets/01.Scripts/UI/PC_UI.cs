@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PC_UI : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class PC_UI : MonoBehaviour
     private RectTransform subtitleRect;
 
     private bool isPlaying = false;
+
+    [SerializeField] GameObject todoBox = null;
+
+    private float popUpSpeed = 0.5f;
+    private float boxMaintainTime = 4f;
 
     public static PC_UI Instance { get; set; }
 
@@ -29,6 +35,9 @@ public class PC_UI : MonoBehaviour
     {
         subtitleBoxRect = subtitleText.transform.parent.GetComponent<RectTransform>();
         subtitleRect = subtitleText.GetComponent<RectTransform>();
+
+        todoBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(250, -300);
+
         ClearSubtitle();
     }
 
@@ -102,6 +111,30 @@ public class PC_UI : MonoBehaviour
             totalLength += characterInfo.advance;
         }
         return totalLength;
+    }
+    #endregion
+
+    #region 할일 목록
+    /// <summary>
+    /// 할일 박스 팝업
+    /// </summary>
+    public void PopUpToDoBox()
+    {
+        todoBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-250,-300), popUpSpeed);
+        StartCoroutine(PopUpAfterSeconds());
+    }
+
+    private IEnumerator PopUpAfterSeconds()
+    {
+        yield return new WaitForSeconds(popUpSpeed + boxMaintainTime);
+        PopDownToDoBox();
+    }
+    /// <summary>
+    /// 할일 박스 들어가기
+    /// </summary>
+    public void PopDownToDoBox()
+    {
+        todoBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(250, -300), popUpSpeed * 2);
     }
     #endregion
 }

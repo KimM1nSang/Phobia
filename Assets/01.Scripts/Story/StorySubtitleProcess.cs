@@ -6,6 +6,9 @@ public class StorySubtitleProcess : MonoBehaviour
 {
     [SerializeField]
     private AudioObject[] audioObjects;
+
+    [SerializeField]
+    private GameObject storyObject;
     
     public void StoryProcess()
     {
@@ -14,7 +17,8 @@ public class StorySubtitleProcess : MonoBehaviour
 
     private IEnumerator Process(AudioObject[] clip)
     {
-        Destroy(GetComponent<BoxCollider>());
+        if (GetComponent<BoxCollider>() != null)
+            Destroy(GetComponent<BoxCollider>());
 
         for (int i = 0; i < clip.Length; i++)
         {
@@ -22,6 +26,8 @@ public class StorySubtitleProcess : MonoBehaviour
             {
                 EndOfProcess();
             }
+            PC_UI.Instance.ClearSubtitle();
+            yield return new WaitForSeconds(0.2f);
             Vocals.Instance.Say(clip[i]);
             yield return new WaitForSeconds(clip[i].clip != null ? clip[i].clip.length : clip[i].subtitle.Length * 0.4f);
         }
@@ -30,7 +36,8 @@ public class StorySubtitleProcess : MonoBehaviour
     }
     private void EndOfProcess()
     {
-
+        storyObject.SetActive(!storyObject.activeSelf);
+        PC_UI.Instance.PopUpToDoBox();
     }
     private void OnTriggerEnter(Collider other)
     {

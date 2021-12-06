@@ -24,6 +24,8 @@ public class PC_UI : MonoBehaviour
     private float popUpSpeed = 0.5f;
     private float boxMaintainTime = 4f;
 
+    private bool isPressPopupQuestBoxBtn = false;
+
     public static PC_UI Instance { get; set; }
 
     private void Awake()
@@ -49,7 +51,23 @@ public class PC_UI : MonoBehaviour
         ClearQuestList();
         RefreshQuestList();
     }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            DOTween.Kill(questBox);
+            if (isPressPopupQuestBoxBtn)
+            {
+                PopDownQuestBox();
+            }
+            else
+            {
+                PopUpQuestBox(false);
+            }
+            isPressPopupQuestBoxBtn = !isPressPopupQuestBoxBtn;
+        }
 
+    }
     #region ÀÚ¸·
 
     /// <summary>
@@ -128,6 +146,8 @@ public class PC_UI : MonoBehaviour
     public void RefreshQuestList()
     {
         questList_txt.text = "";
+
+        string result = "";
         foreach (var quest in questLib)
         {
             foreach (var filter in questIds)
@@ -142,9 +162,15 @@ public class PC_UI : MonoBehaviour
         {
             if (!quest.isDone)
             {
-                questList_txt.text += "- " + quest.content + "\n";
+                result += "- " + quest.content;
+                if(quest.necProgress != 0)
+                {
+                    result += string.Format("({0}/{1})", quest.progress, quest.necProgress);
+                }
+                result += "\n";
             }
         }
+        questList_txt.text += result;
     }
     public void ClearQuestList()
     {
@@ -153,7 +179,6 @@ public class PC_UI : MonoBehaviour
     public void AddQuestId(string questId)
     {
         questIds.Add(questId);
-        RefreshQuestList();
     }
 
     /// <summary>

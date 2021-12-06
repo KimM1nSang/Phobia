@@ -11,4 +11,7 @@ public class Quest : ScriptableObject
     public string content = "";
 
     public bool isDone = false;
+
+    public int necProgress = 0;
+    public int progress = 0;
 }

@@ -11536,6 +11536,7 @@ MonoBehaviour:
   objectName: MainCar
   intercatIconPos: {fileID: 1407617778}
   intercatIcon: {fileID: 1973451846}
+  QuestId: movingCone
 --- !u!114 &1235189706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18456,60 +18457,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4196733f389b01468740b2f15711279, type: 3}
---- !u!1001 &6804642436505939083
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6804642436286129621, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_Name
-      value: QuestLib
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804642436286129643, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804642436286129643, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -19.917336
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804642436286129643, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.9540439
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804642436286129643, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.379842
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804642436286129643, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804642436286129643, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804642436286129643, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804642436286129643, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804642436286129643, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804642436286129643, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804642436286129643, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e14ef21783f55c6458213a6d3464c64d, type: 3}

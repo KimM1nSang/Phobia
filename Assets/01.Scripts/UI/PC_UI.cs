@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class PC_UI : MonoBehaviour
 {
@@ -16,7 +17,9 @@ public class PC_UI : MonoBehaviour
     [SerializeField] private GameObject questBox = null;
     [SerializeField] private Text questList_txt = null;
 
+    [SerializeField] private List<Quest> questLib = new List<Quest>();
     private List<Quest> quests = new List<Quest>();
+    public List<string> questIds = new List<string>();
 
     private float popUpSpeed = 0.5f;
     private float boxMaintainTime = 4f;
@@ -125,6 +128,16 @@ public class PC_UI : MonoBehaviour
     public void RefreshQuestList()
     {
         questList_txt.text = "";
+        foreach (var quest in questLib)
+        {
+            foreach (var filter in questIds)
+            {
+                if(quest.id == filter)
+                {
+                    quests.Add(quest);
+                }
+            }
+        }
         foreach (var quest in quests)
         {
             if (!quest.isDone)
@@ -136,7 +149,13 @@ public class PC_UI : MonoBehaviour
     public void ClearQuestList()
     {
         quests.Clear();
-    }    
+    }
+    public void AddQuestId(string questId)
+    {
+        questIds.Add(questId);
+        RefreshQuestList();
+    }
+
     /// <summary>
     /// 퀘스트 박스 나오기
     /// </summary>

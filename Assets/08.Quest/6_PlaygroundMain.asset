@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5965a9da549a094db512cd03e94cb75, type: 3}
-  m_Name: 6_BrotherSeesawLine-1
+  m_Script: {fileID: 11500000, guid: d308a5733264acd47a7ec4392ef96041, type: 3}
+  m_Name: 6_PlaygroundMain
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
-  subtitle: ...
+  id: PlaygroundMain
+  content: "\uB180\uC774\uD130\uC5D0\uC11C \uB180\uAE30"
+  isDone: 0
+  necProgress: 5
+  progress: 1

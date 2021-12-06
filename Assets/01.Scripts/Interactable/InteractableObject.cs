@@ -10,6 +10,7 @@ public class InteractableObject : MonoBehaviour
     protected Transform intercatIconPos;
     [SerializeField]
     protected GameObject intercatIcon;
+    public bool canInteract = true;
 
     public bool isInteractable { get; set; } = false;
 

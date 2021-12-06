@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject player { get; private set; }
+    public Fade fade { get; private set; }
 
     public bool canMove = true;
     public bool canLook = true;
@@ -21,5 +22,8 @@ public class GameManager : MonoBehaviour
         instance = this;
         if (GameObject.Find("PC_Player") != null)
             player = GameObject.Find("PC_Player");
+
+        if (GameObject.Find("fade") != null)
+            fade = GameObject.Find("fade").GetComponent<Fade>();
     }
 }

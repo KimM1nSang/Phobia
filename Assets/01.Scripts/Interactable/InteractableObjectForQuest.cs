@@ -10,6 +10,7 @@ public class InteractableObjectForQuest : InteractableObject
         base.Interaction();
         if (QuestId != "")
         {
+            if (PC_UI.Instance.questIds.Find((x)=>x==QuestId)==null)
             PC_UI.Instance.AddQuestId(QuestId);
             GetComponent<SubtitleProcess>().Processing();
         }

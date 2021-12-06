@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableTeleportObject : InteractableObject
+public class InteractableTeleportObject : InteractableObjectForQuest
 {
 	public Transform telPos;
 	public override void Interaction()
@@ -11,6 +11,16 @@ public class InteractableTeleportObject : InteractableObject
 		GameManager.instance.player.GetComponent<CharacterController>().enabled = false;
 		GameManager.instance.player.transform.position = telPos.position;
 		GameManager.instance.player.GetComponent<CharacterController>().enabled = true;
-		//GameManager.instance.canMove = false;
+		SubtitleProcess process = GetComponent<SubtitleProcess>();
+		if (process != null)
+		{
+			GameManager.instance.canMove = false;
+			//GetComponent<SubtitleProcess>().Processing();
+			PC_UI.Instance.UpProgress("PlaygroundMain");
+		}
+		else
+		{
+			GameManager.instance.fade.FadeInOut();
+		}
 	}
 }

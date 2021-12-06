@@ -26,7 +26,7 @@ public class PlayerInteract : MonoBehaviour
         if (fov.IsObjInFov())
         {
             interactingObj = fov.GetObjInview();
-            if (fov.IsViewObj())
+            if (fov.IsViewObj()&&interactingObj.canInteract)
             {
                 interactingObj.IconActive(true);
                 if (input.interact)

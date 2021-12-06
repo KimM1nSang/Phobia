@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class PC_UI : MonoBehaviour
 {
-    [SerializeField] Text subtitleText = null;
+    [SerializeField] Text subtitle_txt = null;
 
     private RectTransform subtitleBoxRect;
     private RectTransform subtitleRect;
@@ -14,6 +14,7 @@ public class PC_UI : MonoBehaviour
     private bool isPlaying = false;
 
     [SerializeField] GameObject todoBox = null;
+    [SerializeField] Text todoList_txt = null;
 
     private float popUpSpeed = 0.5f;
     private float boxMaintainTime = 4f;
@@ -33,8 +34,8 @@ public class PC_UI : MonoBehaviour
     }
     private void Start()
     {
-        subtitleBoxRect = subtitleText.transform.parent.GetComponent<RectTransform>();
-        subtitleRect = subtitleText.GetComponent<RectTransform>();
+        subtitleBoxRect = subtitle_txt.transform.parent.GetComponent<RectTransform>();
+        subtitleRect = subtitle_txt.GetComponent<RectTransform>();
 
         todoBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(250, -300);
 
@@ -50,7 +51,7 @@ public class PC_UI : MonoBehaviour
     /// <param name="delay">자막 없어지기 까지의 딜레이</param>
     public void SetSubtitle(string subtitle,float delay)
     {
-        subtitleText.text = subtitle;
+        subtitle_txt.text = subtitle;
 
         string[] splitSubtitle = subtitle.Split('\n');
         string MostLongSubtitle = "";
@@ -71,7 +72,7 @@ public class PC_UI : MonoBehaviour
     /// </summary>
     public void ClearSubtitle()
     {
-        subtitleText.text = "";
+        subtitle_txt.text = "";
         ClearSubtitleBox();
     }
     /// <summary>
@@ -99,15 +100,15 @@ public class PC_UI : MonoBehaviour
     {
         int totalLength = 0;
 
-        Font myFont = subtitleText.font;  //chatText is my Text component
+        Font myFont = subtitle_txt.font;  //chatText is my Text component
         //CharacterInfo characterInfo = new CharacterInfo();
 
         char[] arr = message.ToCharArray();
 
         foreach (char c in arr)
         {
-            myFont.RequestCharactersInTexture(c.ToString(), subtitleText.fontSize, subtitleText.fontStyle);
-            myFont.GetCharacterInfo(c, out CharacterInfo characterInfo, subtitleText.fontSize);
+            myFont.RequestCharactersInTexture(c.ToString(), subtitle_txt.fontSize, subtitle_txt.fontStyle);
+            myFont.GetCharacterInfo(c, out CharacterInfo characterInfo, subtitle_txt.fontSize);
             totalLength += characterInfo.advance;
         }
         return totalLength;
@@ -115,13 +116,29 @@ public class PC_UI : MonoBehaviour
     #endregion
 
     #region 할일 목록
+
+    public void RefreshTodoList()
+    {
+
+    }
+
+    public void ClearTodoList()
+    {
+        todoList_txt.text = "";
+    }
+
+
     /// <summary>
-    /// 할일 박스 팝업
+    /// 할일 박스 나오기
     /// </summary>
-    public void PopUpToDoBox()
+    /// <param name="isPopDown">나왔다 다시 들어가나요?</param>
+    public void PopUpToDoBox(bool isPopDown)
     {
         todoBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-250,-300), popUpSpeed);
-        StartCoroutine(PopUpAfterSeconds());
+        if(isPopDown)
+        {
+            StartCoroutine(PopUpAfterSeconds());
+        }
     }
 
     private IEnumerator PopUpAfterSeconds()

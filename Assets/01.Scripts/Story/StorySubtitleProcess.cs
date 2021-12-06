@@ -12,6 +12,7 @@ public class StorySubtitleProcess : MonoBehaviour
     
     public void StoryProcess()
     {
+        PC_UI.Instance.PopUpToDoBox(true);
         StartCoroutine(Process(audioObjects));
     }
 
@@ -37,7 +38,7 @@ public class StorySubtitleProcess : MonoBehaviour
     private void EndOfProcess()
     {
         storyObject.SetActive(!storyObject.activeSelf);
-        PC_UI.Instance.PopUpToDoBox();
+        PC_UI.Instance.PopUpToDoBox(true);
     }
     private void OnTriggerEnter(Collider other)
     {

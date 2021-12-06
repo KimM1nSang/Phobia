@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoryProcess : MonoBehaviour
+public class SubtitleProcess : MonoBehaviour
 {
 
     [SerializeField]
     protected AudioObject[] audioObjects;
 
-    public virtual void StoryProcessing()
+    public virtual void Processing()
     {
-        PC_UI.Instance.PopUpQuestBox(true);
         StartCoroutine(Process(audioObjects));
     }
     

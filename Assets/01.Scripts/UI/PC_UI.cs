@@ -13,9 +13,10 @@ public class PC_UI : MonoBehaviour
 
     private bool isPlaying = false;
 
-    [SerializeField] GameObject questBox = null;
-    [SerializeField] Text questList_txt = null;
-    [SerializeField] List<Quest> quests = new List<Quest>();
+    [SerializeField] private GameObject questBox = null;
+    [SerializeField] private Text questList_txt = null;
+
+    private List<Quest> quests = new List<Quest>();
 
     private float popUpSpeed = 0.5f;
     private float boxMaintainTime = 4f;
@@ -41,7 +42,8 @@ public class PC_UI : MonoBehaviour
         questBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(250, -300);
 
         ClearSubtitle();
-
+        
+        ClearQuestList();
         RefreshQuestList();
     }
 
@@ -131,7 +133,10 @@ public class PC_UI : MonoBehaviour
             }
         }
     }
-
+    public void ClearQuestList()
+    {
+        quests.Clear();
+    }    
     /// <summary>
     /// 퀘스트 박스 나오기
     /// </summary>

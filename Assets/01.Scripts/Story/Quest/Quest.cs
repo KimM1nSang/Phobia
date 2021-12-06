@@ -7,6 +7,7 @@ public class Quest : ScriptableObject
 {
     public string id = "";
 
+    [TextArea]
     public string content = "";
 
     public bool isDone = false;

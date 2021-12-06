@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: 2_OilNotIncludeCar
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 354c37cd61ec24bbcbbc7921d0a71bc1, type: 3}
-  subtitle: "\uAE30\uB984\uC774 \uBD80\uC871\uD558\uB2E4"
+  subtitle: "[\uAE30\uB984\uC774 \uBD80\uC871\uD558\uB2E4]"

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoryProcess_2 : StoryProcess
+public class SubtitleProcess_2 : SubtitleProcess
 {
     [SerializeField]
     private GameObject storyObject;
@@ -17,6 +17,6 @@ public class StoryProcess_2 : StoryProcess
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-            StoryProcessing();
+            Processing();
     }
 }

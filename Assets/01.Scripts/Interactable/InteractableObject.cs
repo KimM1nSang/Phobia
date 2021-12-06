@@ -23,6 +23,7 @@ public class InteractableObject : MonoBehaviour
     public virtual void Interaction()
     {
         if (!isInteractable) return;
+        IconActive(false);
     }
 
     public void IconActive(bool isActive)

@@ -18331,6 +18331,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1057549739713051123, guid: e4196733f389b01468740b2f15711279, type: 3}
+      propertyPath: m_Name
+      value: QuestText
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085597663583713578, guid: e4196733f389b01468740b2f15711279, type: 3}
+      propertyPath: m_Name
+      value: QuestBox
+      objectReference: {fileID: 0}
     - target: {fileID: 4111504828842588128, guid: e4196733f389b01468740b2f15711279, type: 3}
       propertyPath: m_SizeDelta.x
       value: -60
@@ -18435,9 +18443,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: PCCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8986601824238391604, guid: e4196733f389b01468740b2f15711279, type: 3}
-      propertyPath: m_Text
-      value: "- \uACE0\uAE54\uC744 \uC704\uCE58\uB85C \uC62E\uAE30\uAE30"
+    - target: {fileID: 6399320392025517945, guid: e4196733f389b01468740b2f15711279, type: 3}
+      propertyPath: m_Name
+      value: QuestList
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4196733f389b01468740b2f15711279, type: 3}

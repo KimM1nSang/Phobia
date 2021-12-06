@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3199876435900934918}
   - component: {fileID: 7345914686602090142}
   m_Layer: 5
-  m_Name: ToDOText
+  m_Name: QuestText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 1831708833334423700}
   - component: {fileID: 1643943564675668904}
   m_Layer: 5
-  m_Name: ToDoBox
+  m_Name: QuestBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 5963213956573137337}
   - component: {fileID: 8986601824238391604}
   m_Layer: 5
-  m_Name: ToDoList
+  m_Name: QuestList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,4 +538,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "- \uACE0\uAE54\uC744 \uC704\uCE58\uB85C \uC62E\uAE30\uAE30"
+  m_Text: "- \uACE0\uAE54\uC744 \uC704\uCE58\uB85C \uC62E\uAE30\uAE30 "

@@ -458,8 +458,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subtitle_txt: {fileID: 4111504828842588134}
-  todoBox: {fileID: 2085597663583713578}
-  todoList_txt: {fileID: 8986601824238391604}
+  questBox: {fileID: 2085597663583713578}
+  questList_txt: {fileID: 8986601824238391604}
+  quests: []
 --- !u!1 &6399320392025517945
 GameObject:
   m_ObjectHideFlags: 0

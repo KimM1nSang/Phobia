@@ -13,8 +13,9 @@ public class PC_UI : MonoBehaviour
 
     private bool isPlaying = false;
 
-    [SerializeField] GameObject todoBox = null;
-    [SerializeField] Text todoList_txt = null;
+    [SerializeField] GameObject questBox = null;
+    [SerializeField] Text questList_txt = null;
+    [SerializeField] List<Quest> quests = new List<Quest>();
 
     private float popUpSpeed = 0.5f;
     private float boxMaintainTime = 4f;
@@ -37,9 +38,11 @@ public class PC_UI : MonoBehaviour
         subtitleBoxRect = subtitle_txt.transform.parent.GetComponent<RectTransform>();
         subtitleRect = subtitle_txt.GetComponent<RectTransform>();
 
-        todoBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(250, -300);
+        questBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(250, -300);
 
         ClearSubtitle();
+
+        RefreshQuestList();
     }
 
     #region 자막
@@ -115,26 +118,27 @@ public class PC_UI : MonoBehaviour
     }
     #endregion
 
-    #region 할일 목록
+    #region 퀘스트
 
-    public void RefreshTodoList()
+    public void RefreshQuestList()
     {
-
+        questList_txt.text = "";
+        foreach (var quest in quests)
+        {
+            if (!quest.isDone)
+            {
+                questList_txt.text += "- " + quest.content + "\n";
+            }
+        }
     }
-
-    public void ClearTodoList()
-    {
-        todoList_txt.text = "";
-    }
-
 
     /// <summary>
-    /// 할일 박스 나오기
+    /// 퀘스트 박스 나오기
     /// </summary>
     /// <param name="isPopDown">나왔다 다시 들어가나요?</param>
-    public void PopUpToDoBox(bool isPopDown)
+    public void PopUpQuestBox(bool isPopDown)
     {
-        todoBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-250,-300), popUpSpeed);
+        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-250,-300), popUpSpeed);
         if(isPopDown)
         {
             StartCoroutine(PopUpAfterSeconds());
@@ -144,14 +148,14 @@ public class PC_UI : MonoBehaviour
     private IEnumerator PopUpAfterSeconds()
     {
         yield return new WaitForSeconds(popUpSpeed + boxMaintainTime);
-        PopDownToDoBox();
+        PopDownQuestBox();
     }
     /// <summary>
-    /// 할일 박스 들어가기
+    /// 퀘스트 박스 들어가기
     /// </summary>
-    public void PopDownToDoBox()
+    public void PopDownQuestBox()
     {
-        todoBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(250, -300), popUpSpeed * 2);
+        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(250, -300), popUpSpeed * 2);
     }
     #endregion
 }

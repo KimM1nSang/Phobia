@@ -8,9 +8,9 @@ public class InteractableSubtitleObject : InteractableObject
     public override void Interaction()
     {
         base.Interaction();
-        if(GetComponent<StorySubtitleProcess>() != null)
+        if(GetComponent<StoryProcess_2>() != null)
         {
-            GetComponent<StorySubtitleProcess>().StoryProcess();
+            GetComponent<StoryProcess_2>().StoryProcessing();
         }
         else
         {

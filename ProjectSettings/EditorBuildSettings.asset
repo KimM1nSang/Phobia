@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/02.Scenes/SampleScene.unity
     guid: 3db1837cc97a95e4c98610966fac2b0b
   - enabled: 1
-    path: Assets/Scenes/Playground.unity
+    path: Assets/02.Scenes/Playground.unity
     guid: 7578b3ca8a155d741a5a955f7f8edf17
   - enabled: 1
-    path: Assets/Scenes/LoadingScene.unity
+    path: Assets/02.Scenes/LoadingScene.unity
     guid: 91f75c8e7448b194286b07570984abf1
   - enabled: 1
-    path: Assets/Scenes/HighwayScene.unity
+    path: Assets/02.Scenes/HighwayScene.unity
     guid: 2ab2d13f39e80484cbb1d21fac4f3c5f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fa07c068bd075154d84833ad54fd0b06, type: 2}

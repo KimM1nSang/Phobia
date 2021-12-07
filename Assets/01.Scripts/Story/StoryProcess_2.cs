@@ -12,6 +12,7 @@ public class StoryProcess_2 : SubtitleProcess
         base.EndOfProcess();
         storyObject.SetActive(!storyObject.activeSelf);
         PC_UI.Instance.PopUpQuestBox(true);
+        PC_UI.Instance.RefreshQuestList();
     }
 
     private void OnTriggerEnter(Collider other)

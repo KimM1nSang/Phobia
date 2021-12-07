@@ -90,7 +90,7 @@ public class PC_UI : MonoBehaviour
                 MostLongSubtitle = sub;
             }
         }
-        subtitleBoxRect.sizeDelta = new Vector2(subtitle.Length > 0 ? CalculateWidthOfMessage(MostLongSubtitle) + (subtitleRect.offsetMin.x * 2) : 0, 100 + (splitSubtitle.Length - 1) * 50);
+        subtitleBoxRect.sizeDelta = new Vector2(subtitle.Length > 0 ? CalculateWidthOfMessage(MostLongSubtitle) + (subtitleRect.offsetMin.x * 2) : 0, 80 + (splitSubtitle.Length - 1) * 50);
 
         if (!isPlaying)
             StartCoroutine(ClearAfterSeconds(delay));
@@ -126,18 +126,27 @@ public class PC_UI : MonoBehaviour
     /// <returns></returns>
     public int CalculateWidthOfMessage(string message)
     {
+        string currentMessage = message;
+        string name = "";
+        int nameLength = 0;
         if (message.Contains("-"))
         {
-            int idx = message.IndexOf('-');
-            message.Substring(idx + 2);
-        }
+            int idx = message.IndexOf('>');
+            int idx2 = message.IndexOf('>',idx+1);
+            int idx3 = message.IndexOf('<', idx + 1);
+            nameLength = idx3 - idx;
 
+            name = message.Substring(idx + 1, nameLength);
+            currentMessage = message.Substring(idx2 + 1);
+        }
+        
         int totalLength = 0;
 
         Font myFont = subtitle_txt.font;  //chatText is my Text component
         //CharacterInfo characterInfo = new CharacterInfo();
 
-        char[] arr = message.ToCharArray();
+        char[] arr = currentMessage.ToCharArray();
+        char[] nameArr = name.ToCharArray();
 
         foreach (char c in arr)
         {
@@ -145,6 +154,13 @@ public class PC_UI : MonoBehaviour
             myFont.GetCharacterInfo(c, out CharacterInfo characterInfo, subtitle_txt.fontSize);
             totalLength += characterInfo.advance;
         }
+        foreach (char c in nameArr)
+        {
+            myFont.RequestCharactersInTexture(c.ToString(), subtitle_txt.fontSize, subtitle_txt.fontStyle);
+            myFont.GetCharacterInfo(c, out CharacterInfo characterInfo, subtitle_txt.fontSize);
+            totalLength += characterInfo.advance;
+        }
+        
        
         
         return totalLength;

@@ -20,6 +20,7 @@ public class InteractableGrabObject : InteractableObject
     public void ObjectDrop()
     {
         gameObject.transform.parent = null;
+        gameObject.transform.localScale = Vector3.one;
         //GravityActive(true);
     }
     public void GravityActive(bool active)

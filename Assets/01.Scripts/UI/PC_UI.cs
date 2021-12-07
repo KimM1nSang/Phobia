@@ -47,9 +47,11 @@ public class PC_UI : MonoBehaviour
         questBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(250, -300);
 
         ClearSubtitle();
-        
-        ClearQuestList();
+
+        ClearQuests();
+        ClearQuestLib();
         RefreshQuestList();
+ 
     }
     private void Update()
     {
@@ -124,6 +126,12 @@ public class PC_UI : MonoBehaviour
     /// <returns></returns>
     public int CalculateWidthOfMessage(string message)
     {
+        if (message.Contains("-"))
+        {
+            int idx = message.IndexOf('-');
+            message.Substring(idx + 2);
+        }
+
         int totalLength = 0;
 
         Font myFont = subtitle_txt.font;  //chatText is my Text component
@@ -137,6 +145,8 @@ public class PC_UI : MonoBehaviour
             myFont.GetCharacterInfo(c, out CharacterInfo characterInfo, subtitle_txt.fontSize);
             totalLength += characterInfo.advance;
         }
+       
+        
         return totalLength;
     }
     #endregion
@@ -148,6 +158,7 @@ public class PC_UI : MonoBehaviour
         questList_txt.text = "";
 
         string result = "";
+        quests.Clear();
         foreach (var quest in questLib)
         {
             foreach (var filter in questIds)
@@ -172,7 +183,14 @@ public class PC_UI : MonoBehaviour
         }
         questList_txt.text += result;
     }
-    public void ClearQuestList()
+    public void ClearQuestLib()
+    {
+        foreach (var quest in questLib)
+        {
+            quest.progress = 0;
+        }
+    }
+    public void ClearQuests()
     {
         quests.Clear();
     }
@@ -183,6 +201,7 @@ public class PC_UI : MonoBehaviour
     public void UpProgress(string questId)
     {
         quests.Find((x) => x.id == questId).progress++;
+        RefreshQuestList();
         //퀘스트 진행도 올리는거
     }
 

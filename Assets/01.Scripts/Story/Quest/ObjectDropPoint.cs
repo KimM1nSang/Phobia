@@ -18,6 +18,8 @@ public class ObjectDropPoint : MonoBehaviour
             if(other.GetComponent<InteractableGrabObject>() != null&& PlayerInventory.instance.grabedObject == null)
             {
                 Debug.Log("DROP!");
+                PC_UI.Instance.PopUpQuestBox(true);
+                PC_UI.Instance.UpProgress("movingCone");
                 Destroy(gameObject);
             }
 

@@ -15,7 +15,6 @@ public class InteractableTeleportObject : InteractableObjectForQuest
 		if (process != null)
 		{
 			GameManager.instance.canMove = false;
-			//GetComponent<SubtitleProcess>().Processing();
 			PC_UI.Instance.UpProgress("PlaygroundMain");
 		}
 		else

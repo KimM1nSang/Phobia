@@ -179,27 +179,11 @@ public class PC_UI : MonoBehaviour
     public void AddQuestId(string questId)
     {
         questIds.Add(questId);
-        RefreshQuestList();
     }
     public void UpProgress(string questId)
     {
         quests.Find((x) => x.id == questId).progress++;
-
-        questList_txt.text = "";
-        string result = "";
-        foreach (var quest in quests)
-        {
-            if (!quest.isDone)
-            {
-                result += "- " + quest.content;
-                if (quest.necProgress != 0)
-                {
-                    result += string.Format("({0}/{1})", quest.progress, quest.necProgress);
-                }
-                result += "\n";
-            }
-        }
-        questList_txt.text += result;
+        //퀘스트 진행도 올리는거
     }
 
     /// <summary>

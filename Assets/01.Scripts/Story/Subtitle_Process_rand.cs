@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SubtitleProcess_6 : SubtitleProcess
+public class Subtitle_Process_rand : SubtitleProcess
 {
-	public GameObject darkZone;
 	public override void Processing()
 	{
 		base.Processing();
+	}
+	public IEnumerator ProcessRand(AudioObject[] clip)
+	{
+		PC_UI.Instance.ClearSubtitle();
+		yield return new WaitForSeconds(0.2f);
+		Vocals.Instance.Say(clip[Random.Range(0, clip.Length)]);
 	}
 	protected override IEnumerator Process(AudioObject[] clip)
 	{
@@ -16,9 +21,5 @@ public class SubtitleProcess_6 : SubtitleProcess
 	protected override void EndOfProcess()
 	{
 		base.EndOfProcess();
-		GameManager.instance.canMove = true;
-		GetComponent<InteractableObject>().canInteract = false;
-		darkZone.SetActive(true);
-		StartCoroutine(GetComponent<VolumeSc>().VolumeFade());
 	}
 }

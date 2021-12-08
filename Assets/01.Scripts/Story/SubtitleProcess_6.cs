@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SubtitleProcess_6 : SubtitleProcess
 {
+	public GameObject darkZone;
 	public override void Processing()
 	{
 		base.Processing();
@@ -17,5 +18,7 @@ public class SubtitleProcess_6 : SubtitleProcess
 		base.EndOfProcess();
 		GameManager.instance.canMove = true;
 		GetComponent<InteractableObject>().canInteract = false;
+		darkZone.SetActive(true);
+		StartCoroutine(GetComponent<VolumeSc>().VolumeFade());
 	}
 }

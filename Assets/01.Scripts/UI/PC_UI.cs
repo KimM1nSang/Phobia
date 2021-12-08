@@ -219,6 +219,7 @@ public class PC_UI : MonoBehaviour
     {
         quests.Find((x) => x.id == questId).progress++;
         RefreshQuestList();
+        PC_UI.Instance.PopUpQuestBox(true);
         //퀘스트 진행도 올리는거
     }
 

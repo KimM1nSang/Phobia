@@ -13,7 +13,6 @@ public class VolumeSc : MonoBehaviour
 		while (true)
 		{
 			time +=Time.deltaTime;
-			print(Mathf.Lerp(0f, 1f, time / maxTime));
 			volume.weight = Mathf.Lerp(0f, 1f, time / maxTime);
 			if (time >= maxTime)
 			{

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoryProcess_2 : SubtitleProcess
+public class SubtitleProcess_2 : SubtitleProcess
 {
     [SerializeField]
     private GameObject storyObject;

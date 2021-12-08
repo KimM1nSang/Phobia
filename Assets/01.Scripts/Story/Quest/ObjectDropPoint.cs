@@ -6,7 +6,10 @@ public class ObjectDropPoint : MonoBehaviour
 {
     [SerializeField]
     private bool isUnactiveAtStart = false;
-    private void Start()
+
+    [SerializeField]
+    private string questName = "";
+    protected virtual void Start()
     {
         gameObject.SetActive(!isUnactiveAtStart);
     }
@@ -17,12 +20,14 @@ public class ObjectDropPoint : MonoBehaviour
         {
             if(other.GetComponent<InteractableGrabObject>() != null&& PlayerInventory.instance.grabedObject == null)
             {
-                Debug.Log("DROP!");
-                PC_UI.Instance.PopUpQuestBox(true);
-                PC_UI.Instance.UpProgress("movingCone");
-                Destroy(gameObject);
+                OnDropObject();
             }
-
         }
+    }
+    public virtual void OnDropObject()
+    {
+        Debug.Log("DROP!");
+        PC_UI.Instance.PopUpQuestBox(true);
+        PC_UI.Instance.UpProgress(questName);
     }
 }

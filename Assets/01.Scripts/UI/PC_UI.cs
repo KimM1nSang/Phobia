@@ -28,6 +28,7 @@ public class PC_UI : MonoBehaviour
 
     public static PC_UI Instance { get; set; }
 
+    public Action questPopdown;
     private void Awake()
     {
         if(Instance != null)
@@ -244,7 +245,7 @@ public class PC_UI : MonoBehaviour
     /// </summary>
     public void PopDownQuestBox()
     {
-        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(250, -300), popUpSpeed * 2);
+        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(250, -300), popUpSpeed * 2).OnComplete(()=> questPopdown());
     }
     #endregion
 }

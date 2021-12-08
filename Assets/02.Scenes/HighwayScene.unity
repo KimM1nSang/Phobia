@@ -11085,6 +11085,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa501a89c64c39646ad86b8e1a1c0858, type: 3}
+--- !u!1 &1214237231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1214237232}
+  m_Layer: 0
+  m_Name: Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1214237232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214237231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1771774381}
+  - {fileID: 1498072214}
+  m_Father: {fileID: 434341822}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1214264169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12767,11 +12799,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498072213}
-  m_LocalRotation: {x: 0.54970187, y: -0.835361, z: -0.00000008940697, w: 0.000000014901161}
-  m_LocalPosition: {x: -1.3350011, y: 0.022999763, z: 5.2959995}
+  m_LocalRotation: {x: 0.54970187, y: -0.835361, z: -0.00000008940697, w: -0.000000029802322}
+  m_LocalPosition: {x: -1.3350005, y: 0.02300024, z: 5.2959995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 434341822}
+  m_Father: {fileID: 1214237232}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1498072215
@@ -14695,11 +14727,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771774380}
-  m_LocalRotation: {x: 0.54970187, y: -0.835361, z: -0.00000011920929, w: 0.000000029802322}
-  m_LocalPosition: {x: -1.3350005, y: 0.023000717, z: 5.5369987}
+  m_LocalRotation: {x: 0.54970187, y: -0.835361, z: -0.00000011920929, w: 0.000000022351742}
+  m_LocalPosition: {x: -1.3350005, y: 0.02300024, z: 5.5369987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 434341822}
+  m_Father: {fileID: 1214237232}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!114 &1771774382
@@ -16213,8 +16245,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnactiveAtStart: 1
   questName: movingCone
-  cameraPoint: {fileID: 0}
-  afterDropObject: {fileID: 11400000, guid: 96e21bf9abb41b34b9414c407b561309, type: 2}
+  cameraPoint: {fileID: 1214237231}
+  afterDropObjects:
+  - {fileID: 11400000, guid: 96e21bf9abb41b34b9414c407b561309, type: 2}
+  - {fileID: 11400000, guid: 3ddbf1c5cb2814744b932a69d5411ff7, type: 2}
+  - {fileID: 11400000, guid: ca0922bc51cfb5d478db07bb5fd0c2d0, type: 2}
 --- !u!1001 &1881524879
 PrefabInstance:
   m_ObjectHideFlags: 0

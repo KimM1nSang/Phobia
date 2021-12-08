@@ -11,6 +11,7 @@ public class PC_UI : MonoBehaviour
 
     private RectTransform subtitleBoxRect;
     private RectTransform subtitleRect;
+    private string subName = "";
 
     private bool isPlaying = false;
 
@@ -31,7 +32,7 @@ public class PC_UI : MonoBehaviour
     public Action questPopdown;
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Destroy(this);
         }
@@ -52,11 +53,11 @@ public class PC_UI : MonoBehaviour
         ClearQuests();
         ClearQuestLib();
         RefreshQuestList();
- 
+
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             DOTween.Kill(questBox);
             if (isPressPopupQuestBoxBtn)
@@ -78,7 +79,7 @@ public class PC_UI : MonoBehaviour
     /// </summary>
     /// <param name="subtitle">자막 내용</param>
     /// <param name="delay">자막 없어지기 까지의 딜레이</param>
-    public void SetSubtitle(string subtitle,float delay)
+    public void SetSubtitle(string subtitle, float delay)
     {
         subtitle_txt.text = subtitle;
 
@@ -109,7 +110,7 @@ public class PC_UI : MonoBehaviour
     /// </summary>
     public void ClearSubtitleBox()
     {
-        subtitleBoxRect.sizeDelta = new Vector2(0,0);
+        subtitleBoxRect.sizeDelta = new Vector2(0, 0);
     }
 
     private IEnumerator ClearAfterSeconds(float delay)
@@ -128,26 +129,19 @@ public class PC_UI : MonoBehaviour
     public int CalculateWidthOfMessage(string message)
     {
         string currentMessage = message;
-        string name = "";
-        int nameLength = 0;
+        subName = "";
         if (message.Contains("-"))
         {
-            int idx = message.IndexOf('>');
-            int idx2 = message.IndexOf('>',idx+1);
-            int idx3 = message.IndexOf('<', idx + 1);
-            nameLength = idx3 - idx;
-
-            name = message.Substring(idx + 1, nameLength);
-            currentMessage = message.Substring(idx2 + 1);
+            currentMessage = SubstringColorCommand(message);
         }
-        
+
         int totalLength = 0;
 
         Font myFont = subtitle_txt.font;  //chatText is my Text component
         //CharacterInfo characterInfo = new CharacterInfo();
 
         char[] arr = currentMessage.ToCharArray();
-        char[] nameArr = name.ToCharArray();
+        char[] nameArr = subName.ToCharArray();
 
         foreach (char c in arr)
         {
@@ -161,10 +155,24 @@ public class PC_UI : MonoBehaviour
             myFont.GetCharacterInfo(c, out CharacterInfo characterInfo, subtitle_txt.fontSize);
             totalLength += characterInfo.advance;
         }
-        
-       
-        
+
+
+
         return totalLength;
+    }
+
+    public string SubstringColorCommand(string message)
+    {
+        int nameLength = 0;
+        string currentMessage = "";
+        int idx = message.IndexOf('>');
+        int idx2 = message.IndexOf('>', idx + 1);
+        int idx3 = message.IndexOf('<', idx + 1);
+        nameLength = idx3 - idx;
+
+        subName = message.Substring(idx + 1, nameLength);
+        currentMessage = message.Substring(idx2 + 1);
+        return currentMessage;
     }
     #endregion
 
@@ -180,7 +188,7 @@ public class PC_UI : MonoBehaviour
         {
             foreach (var filter in questIds)
             {
-                if(quest.id == filter)
+                if (quest.id == filter)
                 {
                     quests.Add(quest);
                 }
@@ -191,7 +199,7 @@ public class PC_UI : MonoBehaviour
             if (!quest.isDone)
             {
                 result += "- " + quest.content;
-                if(quest.necProgress != 0)
+                if (quest.necProgress != 0)
                 {
                     result += string.Format("({0}/{1})", quest.progress, quest.necProgress);
                 }
@@ -229,8 +237,8 @@ public class PC_UI : MonoBehaviour
     /// <param name="isPopDown">나왔다 다시 들어가나요?</param>
     public void PopUpQuestBox(bool isPopDown)
     {
-        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-250,-300), popUpSpeed);
-        if(isPopDown)
+        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-250, -300), popUpSpeed);
+        if (isPopDown)
         {
             StartCoroutine(PopUpAfterSeconds());
         }
@@ -246,7 +254,7 @@ public class PC_UI : MonoBehaviour
     /// </summary>
     public void PopDownQuestBox()
     {
-        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(250, -300), popUpSpeed * 2).OnComplete(()=> questPopdown());
+        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(250, -300), popUpSpeed * 2).OnComplete(() => questPopdown());
     }
     #endregion
 }

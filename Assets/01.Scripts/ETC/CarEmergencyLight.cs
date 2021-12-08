@@ -5,16 +5,20 @@ using UnityEngine;
 public class CarEmergencyLight : MonoBehaviour
 {
     [SerializeField] private float blinkTime = 1;
+    private float currentTime = 0;
     [SerializeField] private GameObject blinkObj = null;
-    void Start()
-    {
-        StartCoroutine(LightBlink());
-    }
 
-    private IEnumerator LightBlink()
+    private void Update()
     {
-        yield return new WaitForSeconds(blinkTime);
-        blinkObj.SetActive(!blinkObj.activeSelf);
-        StartCoroutine(LightBlink());
+        if (currentTime >= blinkTime)
+        {
+            blinkObj.SetActive(!blinkObj.activeSelf);
+            currentTime = 0;
+        }
+        else
+        {
+            currentTime += Time.deltaTime;
+        }
+
     }
 }

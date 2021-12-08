@@ -10,7 +10,7 @@ public class ObjectDropPoint_2 : ObjectDropPoint
     private bool isDropObj = false;
 
     [SerializeField]
-    private AudioObject afterDropObject = null;
+    private AudioObject[] afterDropObjects = null;
     protected override void Start()
     {
         base.Start();
@@ -27,6 +27,12 @@ public class ObjectDropPoint_2 : ObjectDropPoint
     {
         if (!isDropObj) return;
         cameraPoint.SetActive(true);
-        Vocals.Instance.Say(afterDropObject);
+        Vocals.Instance.ClearActions();
+        Vocals.Instance.endOfEnd += PushToRoad;
+        Vocals.Instance.Processing(afterDropObjects);
+    }
+    public void PushToRoad()
+    {
+
     }
 }

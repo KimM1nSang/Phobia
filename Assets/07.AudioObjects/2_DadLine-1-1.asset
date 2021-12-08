@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5965a9da549a094db512cd03e94cb75, type: 3}
-  m_Name: 2_DadLine-2
+  m_Name: 2_DadLine-1-1
   m_EditorClassIdentifier: 
   clip: {fileID: 0}
-  subtitle: "\uACE0\uD5A5\uC73C\uB85C \uAC00\uB294 \uAE38\uC774\uC5C8\uB294\uB370
-    \uB9D0\uC774\uC57C"
+  subtitle: "<color=#ff0000>\uC544\uBE60</color> - \uC5B4\uD6C4\u2026\uD558\uD544\uC774\uBA74
+    \uAE30\uB984\uC774 \uB5A8\uC5B4\uC9C0\uB0D0\u2026"

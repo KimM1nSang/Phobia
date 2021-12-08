@@ -38,6 +38,6 @@ public class Vocals : MonoBehaviour
         if (clip.clip != null)
             source.PlayOneShot(clip.clip);
 
-        PC_UI.Instance.SetSubtitle(clip.subtitle, clip.clip != null ? clip.clip.length : clip.subtitle.Length * 0.4f);
+        PC_UI.Instance.SetSubtitle(clip.subtitle, clip.clip != null ? clip.clip.length : PC_UI.Instance.SubstringColorCommand(clip.subtitle).Length* 0.4f);
     }
 }

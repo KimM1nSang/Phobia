@@ -8,9 +8,9 @@ public class SubtitleProcess_2 : SubtitleProcess
     [SerializeField]
     private GameObject storyObject;
 
-    protected override void EndOfProcess()
+    protected override void StartOfEndProcess()
     {
-        base.EndOfProcess();
+        base.StartOfEndProcess();
         storyObject.SetActive(!storyObject.activeSelf);
         PC_UI.Instance.PopUpQuestBox(true);
         PC_UI.Instance.RefreshQuestList();

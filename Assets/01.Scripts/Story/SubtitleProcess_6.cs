@@ -13,11 +13,15 @@ public class SubtitleProcess_6 : SubtitleProcess
 	{
 		return base.Process(clip);
 	}
-	protected override void EndOfProcess()
+	protected override void StartOfEndProcess()
 	{
-		base.EndOfProcess();
+		base.StartOfEndProcess();
 		GameManager.instance.canMove = true;
 		GetComponent<InteractableObject>().canInteract = false;
+	}
+	protected override void EndOfEndProcess()
+	{
+		base.EndOfEndProcess();
 		darkZone.SetActive(true);
 		StartCoroutine(GetComponent<VolumeSc>().VolumeFade());
 	}

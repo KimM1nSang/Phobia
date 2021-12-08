@@ -19,16 +19,21 @@ public class SubtitleProcess : MonoBehaviour
         {
             if (i == clip.Length - 1)
             {
-                EndOfProcess();
+                StartOfEndProcess();
             }
             PC_UI.Instance.ClearSubtitle();
             yield return new WaitForSeconds(0.2f);
             Vocals.Instance.Say(clip[i]);
             yield return new WaitForSeconds(clip[i].clip != null ? clip[i].clip.length : clip[i].subtitle.Length * 0.4f);
         }
+        EndOfEndProcess();
         PC_UI.Instance.ClearSubtitle();
     }
-    protected virtual void EndOfProcess()
+    protected virtual void StartOfEndProcess()
+    {
+
+    }
+    protected virtual void EndOfEndProcess()
     {
 
     }

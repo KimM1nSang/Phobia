@@ -15,8 +15,11 @@ public class InteractableAnimationObject : InteractableObjectForQuest
 	public override void Interaction()
 	{
 		base.Interaction();
-		animation.Play();
-		StartCoroutine(AnimationEndCheck());
+		if (animation.clip != null)
+		{
+			animation.Play();
+			StartCoroutine(AnimationEndCheck());
+		}
 	}
 	IEnumerator AnimationEndCheck()
 	{

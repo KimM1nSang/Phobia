@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour
     }
     void Update()
     {
+
         if (!GameManager.instance.canMove) return;
 
         float x = input.rightMove;
@@ -32,7 +33,7 @@ public class PlayerMove : MonoBehaviour
 
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = -9.8f;
         }
 
         Vector3 move = transform.right * x + transform.forward * z;

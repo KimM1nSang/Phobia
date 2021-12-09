@@ -95,7 +95,8 @@ public class PC_UI : MonoBehaviour
         subtitleBoxRect.sizeDelta = new Vector2(subtitle.Length > 0 ? CalculateWidthOfMessage(MostLongSubtitle) + (subtitleRect.offsetMin.x * 2) : 0, 80 + (splitSubtitle.Length - 1) * 50);
 
         if (!isPlaying)
-            StartCoroutine(ClearAfterSeconds(delay));
+        { }
+            //StartCoroutine(ClearAfterSeconds(delay));
     }
     /// <summary>
     /// 자막 지우기

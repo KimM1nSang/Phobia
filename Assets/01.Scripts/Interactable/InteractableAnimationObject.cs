@@ -6,22 +6,20 @@ public class InteractableAnimationObject : InteractableObjectForQuest
 {
 	private Animation animation;
 	public AnimationClip clip;
+	public Animation objAnimation;
+	public AnimationClip objAnimationClip;
 	private void Start()
 	{
 		animation = GameManager.instance.player.GetComponent<Animation>();
-		animation.clip = clip;
 
 	}
 	public override void Interaction()
 	{
 		base.Interaction();
-		if (animation.clip != null)
-		{
-			animation.Play();
-			StartCoroutine(AnimationEndCheck());
-		}
+		AnimationPlay(animation, clip);
+		AnimationPlay(objAnimation, objAnimationClip);
 	}
-	IEnumerator AnimationEndCheck()
+	IEnumerator AnimationEndCheck(Animation _animation)
 	{
 		while (true)
 		{
@@ -31,6 +29,15 @@ public class InteractableAnimationObject : InteractableObjectForQuest
 				yield break;
 			}
 			yield return null;
+		}
+	}
+	private void AnimationPlay(Animation _animation, AnimationClip _clip)
+	{
+		if (_clip != null)
+		{
+			_animation.clip = _clip;
+			_animation.Play();
+			StartCoroutine(AnimationEndCheck(_animation));
 		}
 	}
 }

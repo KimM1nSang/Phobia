@@ -15,7 +15,7 @@ public class ObjectDropPoint_2 : ObjectDropPoint
     {
         base.Start();
         cameraPoint.SetActive(false);
-        PC_UI.Instance.questPopdown += ActiveCamPointObj;
+        PC_UI.Instance.questPopup += ActiveCamPointObj;
     }
     public override void OnDropObject()
     {
@@ -27,12 +27,6 @@ public class ObjectDropPoint_2 : ObjectDropPoint
     {
         if (!isDropObj) return;
         cameraPoint.SetActive(true);
-        Vocals.Instance.ClearActions();
-        Vocals.Instance.endOfEnd += PushToRoad;
         Vocals.Instance.Processing(afterDropObjects);
-    }
-    public void PushToRoad()
-    {
-
     }
 }

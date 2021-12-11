@@ -30,6 +30,7 @@ public class PC_UI : MonoBehaviour
     public static PC_UI Instance { get; set; }
 
     public Action questPopdown;
+    public Action questPopup;
     private void Awake()
     {
         if (Instance != null)
@@ -60,6 +61,7 @@ public class PC_UI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             DOTween.Kill(questBox);
+            //StopCoroutine(PopUpAfterSeconds());
             if (isPressPopupQuestBoxBtn)
             {
                 PopDownQuestBox();
@@ -164,6 +166,9 @@ public class PC_UI : MonoBehaviour
 
     public string SubstringColorCommand(string message)
     {
+        if (!message.Contains(">"))
+            return message;
+
         int nameLength = 0;
         string currentMessage = "";
         int idx = message.IndexOf('>');
@@ -173,6 +178,10 @@ public class PC_UI : MonoBehaviour
 
         subName = message.Substring(idx + 1, nameLength);
         currentMessage = message.Substring(idx2 + 1);
+        Debug.Log(currentMessage.Length);
+        Debug.Log(currentMessage);
+        Debug.Log(message.Length);
+        Debug.Log(message);
         return currentMessage;
     }
     #endregion
@@ -238,7 +247,7 @@ public class PC_UI : MonoBehaviour
     /// <param name="isPopDown">나왔다 다시 들어가나요?</param>
     public void PopUpQuestBox(bool isPopDown)
     {
-        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-250, -300), popUpSpeed);
+        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-250, -300), popUpSpeed).OnComplete(() => questPopup?.Invoke());
         if (isPopDown)
         {
             StartCoroutine(PopUpAfterSeconds());
@@ -255,7 +264,7 @@ public class PC_UI : MonoBehaviour
     /// </summary>
     public void PopDownQuestBox()
     {
-        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(250, -300), popUpSpeed * 2).OnComplete(() => questPopdown());
+        questBox.GetComponent<RectTransform>().DOAnchorPos(new Vector2(250, -300), popUpSpeed * 2).OnComplete(() => questPopdown?.Invoke());
     }
     #endregion
 }

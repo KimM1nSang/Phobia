@@ -62,15 +62,15 @@ public class Vocals : MonoBehaviour
             if (i == clip.Length - 1)
             {
                 if (startOfEnd != null)
-                    startOfEnd.Invoke();
+                    startOfEnd?.Invoke();
             }
             PC_UI.Instance.ClearSubtitle();
             yield return new WaitForSeconds(0.2f);
             Say(clip[i]);
-            yield return new WaitForSeconds(clip[i].clip != null ? clip[i].clip.length : clip[i].subtitle.Length * 0.4f);
+            yield return new WaitForSeconds(clip[i].clip != null ? clip[i].clip.length : clip[i].subtitle.Length * 0.2f);
         }
         if (endOfEnd != null)
-            endOfEnd.Invoke();
+            endOfEnd?.Invoke();
         PC_UI.Instance.ClearSubtitle();
     }
 }

@@ -13,6 +13,8 @@ public class PlayerAnimationHandler : MonoBehaviour
     public Transform AccidentCarSpawnTrm;
     public bool isAccidentDone = false;
 
+    public AudioObject CarCommingAudioObj;
+
     RaycastHit hit;
     float maxDist = 1000f;
     void Start()
@@ -60,6 +62,9 @@ public class PlayerAnimationHandler : MonoBehaviour
                 {
                     isAccidentDone = true;
                     CarAccident();
+
+                    PC_UI.Instance.ClearSubtitle();
+                    Vocals.Instance.Say(CarCommingAudioObj);
                 }
             }
         }

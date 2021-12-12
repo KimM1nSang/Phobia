@@ -10167,6 +10167,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: son
       objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 8c28075e6e1a5c34ca899fd618879dd4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7618624
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 8c28075e6e1a5c34ca899fd618879dd4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.00000014643882
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 8c28075e6e1a5c34ca899fd618879dd4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.647739
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 8c28075e6e1a5c34ca899fd618879dd4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.00000010199705
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 8c28075e6e1a5c34ca899fd618879dd4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 80.743
+      objectReference: {fileID: 0}
+    - target: {fileID: 400044, guid: 8c28075e6e1a5c34ca899fd618879dd4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7629932
+      objectReference: {fileID: 0}
+    - target: {fileID: 400044, guid: 8c28075e6e1a5c34ca899fd618879dd4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.000000057951468
+      objectReference: {fileID: 0}
+    - target: {fileID: 400044, guid: 8c28075e6e1a5c34ca899fd618879dd4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6464066
+      objectReference: {fileID: 0}
+    - target: {fileID: 400044, guid: 8c28075e6e1a5c34ca899fd618879dd4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00000006848901
+      objectReference: {fileID: 0}
+    - target: {fileID: 400044, guid: 8c28075e6e1a5c34ca899fd618879dd4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 80.542
+      objectReference: {fileID: 0}
     - target: {fileID: 400078, guid: 8c28075e6e1a5c34ca899fd618879dd4, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -19210,6 +19250,10 @@ PrefabInstance:
       propertyPath: AccidentCarPrefab
       value: 
       objectReference: {fileID: 5256648851929599054, guid: 80f9cf25f9a714f4d99d07965421d6e3, type: 3}
+    - target: {fileID: 7996917833848036044, guid: 040b29c1c09a03646aa9a1d48acd9519, type: 3}
+      propertyPath: CarCommingAudioObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 47211b79f71b7fc438274e51cbb45609, type: 2}
     - target: {fileID: 7996917833848036044, guid: 040b29c1c09a03646aa9a1d48acd9519, type: 3}
       propertyPath: AccidentCarSpawnTrm
       value: 

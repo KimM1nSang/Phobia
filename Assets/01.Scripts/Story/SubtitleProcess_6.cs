@@ -22,7 +22,10 @@ public class SubtitleProcess_6 : SubtitleProcess
 	protected override void EndOfEndProcess()
 	{
 		base.EndOfEndProcess();
-		darkZone.SetActive(true);
-		StartCoroutine(GetComponent<VolumeSc>().VolumeFade());
+		if (darkZone != null)
+		{
+			darkZone.SetActive(true);
+			StartCoroutine(GetComponent<VolumeSc>().VolumeFade());
+		}
 	}
 }

@@ -11,7 +11,7 @@ public class InteractableTeleportObject : InteractableObject
 	public override void Interaction()
 	{
 		base.Interaction();
-		InteractableObject[] InteractableObjects;
+		//InteractableObject[] InteractableObjects;
 		GameManager.instance.player.GetComponent<CharacterController>().enabled = false;
 		GameManager.instance.player.transform.position = telPos.position;
 		GameManager.instance.player.GetComponent<CharacterController>().enabled = true;

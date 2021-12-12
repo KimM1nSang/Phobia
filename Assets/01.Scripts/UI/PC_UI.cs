@@ -31,6 +31,7 @@ public class PC_UI : MonoBehaviour
 
     public Action questPopdown;
     public Action questPopup;
+    public Action onQuestDone;
     private void Awake()
     {
         if (Instance != null)
@@ -229,15 +230,34 @@ public class PC_UI : MonoBehaviour
     {
         quests.Clear();
     }
+    public void SucessQuest(string questId)
+    {
+        Quest quest = quests.Find((x) => x.id == questId);
+        if (quest.necProgress <= quest.progress)
+        {
+            quest.isDone = true;
+            AddQuestId(quest.nextQuest.id);
+            if (onQuestDone != null)
+            {
+                onQuestDone();
+            }
+        }
+    }
     public void AddQuestId(string questId)
     {
         questIds.Add(questId);
     }
     public void UpProgress(string questId)
     {
-        quests.Find((x) => x.id == questId).progress++;
-        RefreshQuestList();
-        PC_UI.Instance.PopUpQuestBox(true);
+       
+        Quest quest = quests.Find((x) => x.id == questId);
+        if (!quest.isDone)
+        {
+            quest.progress++;
+            RefreshQuestList();
+            PC_UI.Instance.PopUpQuestBox(true);
+        }
+        SucessQuest(questId);
         //퀘스트 진행도 올리는거
     }
 

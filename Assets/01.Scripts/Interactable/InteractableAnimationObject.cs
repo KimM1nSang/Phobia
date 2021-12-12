@@ -23,7 +23,7 @@ public class InteractableAnimationObject : InteractableObjectForQuest
 	{
 		while (true)
 		{
-			if (animation.isPlaying)
+			if (_animation.isPlaying)
 			{
 				PC_UI.Instance.UpProgress(QuestId);
 				yield break;

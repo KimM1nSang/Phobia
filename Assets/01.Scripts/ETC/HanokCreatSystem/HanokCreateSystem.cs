@@ -56,10 +56,6 @@ public class HanokCreateSystem : MonoBehaviour
                         loopedHanok[i - 2].SetActive(false);
                     }
                 }
-                else if (i > 0)
-                {
-                    loopedHanok[i - 1].SetActive(true);
-                }
             }
         }
     }

@@ -29,10 +29,12 @@ public class PlayerAnimationHandler : MonoBehaviour
     }
     public void BeforCarAccident()
     {
-        GameManager.instance.canInteract = false; Fade.Instance.FadeInOut(0.5f);
+
         transform.position = carAccidentTrm.position;
         GameManager.instance.canMove = false;
         GameManager.instance.canLook = false;
+        GameManager.instance.canInteract = false; 
+        Fade.Instance.FadeInOut(0.5f);
         GetComponent<CharacterController>().center = new Vector3(0, 1.8f, 0);
         animator.SetBool("isFalldown", true);
     }

@@ -8,10 +8,12 @@ public class InteractableDragObject : InteractableObject
 	private bool canRotate = false;
 	public float doorDistance;
 
+	private float firstDoorRot;
 
 	protected override void Awake()
 	{
 		base.Awake();
+		firstDoorRot = transform.parent.rotation.eulerAngles.y + doorDir;
 	}
 	public override void Interaction()
 	{
@@ -49,7 +51,7 @@ public class InteractableDragObject : InteractableObject
 			//문과 플레이어 거리가 일정량 이상 가까워 지면 플레이어 쪽으로 문을 못 당기게 막음
 			if (!(distance < doorDistance && PlayerInput.instance.mouseY < 0))
 			{
-				transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + doorDir * PlayerInput.instance.mouseY, 0, 90), 0);
+				transform.parent.rotation = Quaternion.Euler(0, Mathf.Clamp(transform.parent.rotation.eulerAngles.y + doorDir * PlayerInput.instance.mouseY, firstDoorRot, firstDoorRot + 90), 0);
 			}
 
 		}

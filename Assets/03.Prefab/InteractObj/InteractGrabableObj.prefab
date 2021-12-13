@@ -290,6 +290,7 @@ MonoBehaviour:
   intercatIconPos: {fileID: 8028193435358823830}
   intercatIcon: {fileID: 3870252727626663931}
   canInteract: 1
+  isUsable: 0
 --- !u!54 &8028193435184580995
 Rigidbody:
   m_ObjectHideFlags: 0

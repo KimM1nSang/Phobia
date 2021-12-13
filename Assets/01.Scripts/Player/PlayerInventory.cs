@@ -9,7 +9,7 @@ public class PlayerInventory : MonoBehaviour
     public Transform grabObjectForwardTransform;
     public Transform grabObjectHandTransform;
 
-    public InteractableObject grabedObject;
+    public InteractableGrabObject grabedObject;
     private enum GrabObjectState
     {
         OnHand,
@@ -46,14 +46,16 @@ public class PlayerInventory : MonoBehaviour
                 {
                     case GrabObjectState.OnHand:
 
-                        grabState = GrabObjectState.OnForward;
+                        if(!grabedObject.isUsable)
+                        {
+                            grabState = GrabObjectState.OnForward;
+                            grabedObject.transform.rotation = grabedObject.transform.parent.rotation;
+                            grabedObject.transform.LookAt(transform.position);
+                            grabedObject.transform.position = grabObjectForwardTransform.position;
 
-                        grabedObject.transform.rotation = grabedObject.transform.parent.rotation;
-                        grabedObject.transform.LookAt(transform.position);
-                        grabedObject.transform.position = grabObjectForwardTransform.position;
-
-                        GameManager.instance.canMove = false;
-                        GameManager.instance.canLook = false;
+                            GameManager.instance.canMove = false;
+                            GameManager.instance.canLook = false;
+                        }
                         break;
                     case GrabObjectState.OnForward:
 
@@ -77,7 +79,7 @@ public class PlayerInventory : MonoBehaviour
                 grabState = GrabObjectState.OnForward;
                 GameManager.instance.canMove = true;
                 GameManager.instance.canLook = true;
-                grabedObject.GetComponent<InteractableGrabObject>().ObjectDrop();
+                grabedObject.ObjectDrop();
                 grabedObject = null;
             }
         }

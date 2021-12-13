@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractableGrabObject : InteractableObject
 {
     private Rigidbody rigid;
-
+    public bool isUsable;
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();

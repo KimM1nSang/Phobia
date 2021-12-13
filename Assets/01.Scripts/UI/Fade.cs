@@ -42,8 +42,16 @@ public class Fade : MonoBehaviour
     public void FadeInOut(float time = 1f)
     {
         fade.color = new Color(0, 0, 0, 1);
-        GameManager.instance.canMove = false;
-        //fade.DOFade(1, time).OnComplete(()=>fade.DOFade(0,time).OnComplete(()=> GameManager.instance.canMove = true));   
-        fade.DOFade(0, time).OnComplete(() => GameManager.instance.canMove = true);
+        if (!GameManager.instance.canMove)
+        {
+            GameManager.instance.canMove = false;
+            //fade.DOFade(1, time).OnComplete(()=>fade.DOFade(0,time).OnComplete(()=> GameManager.instance.canMove = true));   
+            fade.DOFade(0, time).OnComplete(() => GameManager.instance.canMove = true);
+        }
+        else
+        {
+            fade.DOFade(0, time);
+        }
+        
     }
 }

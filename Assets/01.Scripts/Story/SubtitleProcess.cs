@@ -12,8 +12,7 @@ public class SubtitleProcess : MonoBehaviour
     {
         StartCoroutine(Process(audioObjects));
     }
-    
-    protected virtual IEnumerator Process(AudioObject[] clip)
+	protected virtual IEnumerator Process(AudioObject[] clip)
     {
         for (int i = 0; i < clip.Length; i++)
         {

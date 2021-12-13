@@ -20,7 +20,6 @@ public class InteractableTeleportObject : InteractableObject
 			if (PC_UI.Instance.questIds.Find((x) => x == QuestId) == null)
 			{
 				PC_UI.Instance.AddQuestId(QuestId);
-				PC_UI.Instance.RefreshQuestList();
 			}
 			GetComponent<SubtitleProcess>().Processing();
 			GameManager.instance.canMove = false;

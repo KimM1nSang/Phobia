@@ -31,12 +31,16 @@ public class Subtitle_Process_rand : SubtitleProcess
 	}
 	private void OnTriggerStay(Collider other)
 	{
-		time += Time.deltaTime;
-		if (5<= time)
+		if (other.gameObject.CompareTag("Player"))
 		{
-			ProcessingRand();
-			time = 0f;
+			time += Time.deltaTime;
+			if (5 <= time)
+			{
+				ProcessingRand();
+				time = 0f;
+			}	
 		}
+
 
 	}
 	private void OnTriggerExit(Collider other)

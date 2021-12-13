@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d308a5733264acd47a7ec4392ef96041, type: 3}
   m_Name: 6_PlaygroundMain
   m_EditorClassIdentifier: 
+  nextQuest: {fileID: 11400000, guid: bd9a9001da330ef47a9210b55a57f9f5, type: 2}
   id: PlaygroundMain
   content: "\uB180\uC774\uD130\uC5D0\uC11C \uB180\uAE30"
   isDone: 0
   necProgress: 5
-  progress: 3
+  progress: 0

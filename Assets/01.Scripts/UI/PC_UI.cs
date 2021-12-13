@@ -189,11 +189,8 @@ public class PC_UI : MonoBehaviour
 
     #region 퀘스트
 
-    public void RefreshQuestList()
+    public void QuestList()
     {
-        questList_txt.text = "";
-
-        string result = "";
         quests.Clear();
         foreach (var quest in questLib)
         {
@@ -201,10 +198,20 @@ public class PC_UI : MonoBehaviour
             {
                 if (quest.id == filter)
                 {
-                    quests.Add(quest);
+                    if (quests.Find(x => x.id == filter)==null)
+                    {
+                        quests.Add(quest);
+                    }
                 }
             }
         }
+    }
+    public void RefreshQuestList()
+    {
+        questList_txt.text = "";
+
+        string result = "";
+
         foreach (var quest in quests)
         {
             if (!quest.isDone)
@@ -230,15 +237,17 @@ public class PC_UI : MonoBehaviour
     {
         quests.Clear();
     }
-    public void SucessQuest(string questId)
+    public virtual void SuccessQuest(string questId)
     {
         Quest quest = quests.Find((x) => x.id == questId);
         if (quest.necProgress <= quest.progress)
         {
-            quest.isDone = true;
-            AddQuestId(quest.nextQuest.id);
-            if (onQuestDone != null)
+            if (quest.nextQuest != null)
             {
+                quest.isDone = true;
+                quest.nextQuest.isDone = false;
+                AddQuestId(quest.nextQuest.id);
+                onQuestDone = StageQuest_6.Instance.QuestCheck(quests.Count);
                 onQuestDone();
             }
         }
@@ -246,6 +255,10 @@ public class PC_UI : MonoBehaviour
     public void AddQuestId(string questId)
     {
         questIds.Add(questId);
+        QuestList();
+        RefreshQuestList();
+        Quest quest = quests.Find((x) => x.id == questId);
+        quest.isDone = false;
     }
     public void UpProgress(string questId)
     {
@@ -257,7 +270,7 @@ public class PC_UI : MonoBehaviour
             RefreshQuestList();
             PC_UI.Instance.PopUpQuestBox(true);
         }
-        SucessQuest(questId);
+        SuccessQuest(questId);
         //퀘스트 진행도 올리는거
     }
 

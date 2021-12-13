@@ -5,10 +5,12 @@ using UnityEngine;
 public class InteractableGrabObject : InteractableObject
 {
     private Rigidbody rigid;
+    private Vector3 objectScale;
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        objectScale = transform.localScale;
     }
     public override void Interaction()
     {
@@ -20,7 +22,7 @@ public class InteractableGrabObject : InteractableObject
     public void ObjectDrop()
     {
         gameObject.transform.parent = null;
-        gameObject.transform.localScale = Vector3.one;
+        gameObject.transform.localScale = objectScale;
         //GravityActive(true);
     }
     public void GravityActive(bool active)

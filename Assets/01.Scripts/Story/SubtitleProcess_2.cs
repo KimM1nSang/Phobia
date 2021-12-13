@@ -13,7 +13,7 @@ public class SubtitleProcess_2 : SubtitleProcess
         base.StartOfEndProcess();
         storyObject.SetActive(!storyObject.activeSelf);
         PC_UI.Instance.PopUpQuestBox(true);
-        PC_UI.Instance.RefreshQuestList();
+        //PC_UI.Instance.RefreshQuestList();
     }
 
     private void OnTriggerEnter(Collider other)

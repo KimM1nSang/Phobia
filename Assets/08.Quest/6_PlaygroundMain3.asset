@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d308a5733264acd47a7ec4392ef96041, type: 3}
-  m_Name: 6_PlaygroundMain2
+  m_Name: 6_PlaygroundMain3
   m_EditorClassIdentifier: 
-  nextQuest: {fileID: 11400000, guid: 73225899e95b31f41a7a1002cc21e671, type: 2}
-  id: PlaygroundMain2
-  content: "\uBAA8\uB798\uC0AC\uC7A5 \uBC14\uAE65\uC5D0\uC11C \uC591\uB3D9\uC774
-    \uCC3E\uC544 \uBAA8\uB798\uC0AC\uC7A5\uC5D0 \uB193\uAE30"
+  nextQuest: {fileID: 11400000, guid: 82e58893dbefe39449a7f1af8b9a1f6e, type: 2}
+  id: PlaygroundMain3
+  content: <color=#ff0000>&$##^^@@$</color>
   isDone: 1
   necProgress: 1
   progress: 0

@@ -7,6 +7,6 @@ public class ObjectDropPoint_6 : ObjectDropPoint
 	public override void OnDropObject()
 	{
 		base.OnDropObject();
-
+		Destroy(this.gameObject);
 	}
 }

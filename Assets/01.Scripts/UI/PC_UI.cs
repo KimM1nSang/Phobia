@@ -206,6 +206,17 @@ public class PC_UI : MonoBehaviour
             }
         }
     }
+    public void QuestListAdd(string id)
+    {
+        foreach (var quest in questLib)
+        {
+            if (quest.id == id)
+            {
+                print("A");
+                quests.Add(quest);
+            }
+        }
+    }
     public void RefreshQuestList()
     {
         questList_txt.text = "";

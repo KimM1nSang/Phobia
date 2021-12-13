@@ -6,6 +6,7 @@ public class InteractableGrabObject : InteractableObject
 {
     private Rigidbody rigid;
     private Vector3 objectScale;
+    public bool isUsable = false;
 
     private void Start()
     {

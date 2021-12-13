@@ -32,7 +32,7 @@ public class HanokCreateSystem : MonoBehaviour
             {
                 hanokIdx = 0;
             }
-            HCSHs[i] = hanok.GetComponent<HanokCreateSystemHelper>();
+            HCSHs[i] = hanok.GetComponentInChildren<HanokCreateSystemHelper>();
             HCSHs[i].hanokIndex = i;
 
             hanok.SetActive(i == 0 ? true: false);

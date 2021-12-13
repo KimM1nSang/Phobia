@@ -860,13 +860,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loopHanok_Prefabs:
-  - {fileID: 2099560065584086714, guid: cbfa481a972e0df4d99f49e370cf2f7c, type: 3}
-  - {fileID: 2099560065584086714, guid: 6a2c73efe898be049b1e25f7a6fb7d86, type: 3}
-  - {fileID: 2099560065584086714, guid: 6a2c73efe898be049b1e25f7a6fb7d86, type: 3}
-  - {fileID: 2099560065584086714, guid: 6a2c73efe898be049b1e25f7a6fb7d86, type: 3}
-  - {fileID: 2099560065584086714, guid: 6a2c73efe898be049b1e25f7a6fb7d86, type: 3}
-  - {fileID: 2099560065584086714, guid: 6a2c73efe898be049b1e25f7a6fb7d86, type: 3}
-  - {fileID: 2099560065584086714, guid: 6a2c73efe898be049b1e25f7a6fb7d86, type: 3}
+  - {fileID: 2099560065584086714, guid: 5f2b698b336f8494bb91a0ab7e671a25, type: 3}
+  - {fileID: 2099560065584086714, guid: 77f4305d9e2d01049b0968f4af7d01a1, type: 3}
+  - {fileID: 2099560065584086714, guid: af47f4a10d0fde34198bfac516488299, type: 3}
+  - {fileID: 2099560065584086714, guid: af47f4a10d0fde34198bfac516488299, type: 3}
+  - {fileID: 2099560065584086714, guid: af47f4a10d0fde34198bfac516488299, type: 3}
+  - {fileID: 2099560065584086714, guid: af47f4a10d0fde34198bfac516488299, type: 3}
+  - {fileID: 2099560065584086714, guid: af47f4a10d0fde34198bfac516488299, type: 3}
   hanokTrms:
   - {fileID: 1070307176}
   - {fileID: 966005923}

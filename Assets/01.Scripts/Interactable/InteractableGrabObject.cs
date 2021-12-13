@@ -16,9 +16,12 @@ public class InteractableGrabObject : InteractableObject
     public override void Interaction()
     {
         base.Interaction();
-        PlayerInventory.instance.grabedObject = this;
-        gameObject.transform.parent = PlayerInventory.instance.grabObjectHandTransform;
-        //GravityActive(false);
+        if(PlayerInventory.instance.grabedObject == null)
+        {
+            PlayerInventory.instance.grabedObject = this;
+            gameObject.transform.parent = PlayerInventory.instance.grabObjectHandTransform;
+            //GravityActive(false);
+        }
     }
     public void ObjectDrop()
     {

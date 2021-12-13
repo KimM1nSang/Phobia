@@ -34,7 +34,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         GameManager.instance.canMove = false;
         GameManager.instance.canLook = false;
         GameManager.instance.canInteract = false; 
-        //Fade.Instance.FadeInOut(0.5f);
+        Fade.Instance.FadeInOut(0.5f);
         GetComponent<CharacterController>().center = new Vector3(0, 1.8f, 0);
         animator.SetBool("isFalldown", true);
     }

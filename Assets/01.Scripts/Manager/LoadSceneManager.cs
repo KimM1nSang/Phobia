@@ -21,11 +21,26 @@ public class LoadSceneManager : MonoBehaviour
     public static void LoadScene(string SceneName)
     {
         loadSceneName = SceneName;
+        dondestroy.Instance.idx++;
+        SceneManager.LoadScene("LoadingScene");
+    }
+    public static void LoadScene(int SceneName)
+    {
+        loadSceneName = null;
+        dondestroy.Instance.idx++;
         SceneManager.LoadScene("LoadingScene");
     }
     IEnumerator LoadingSceneProcess()
     {
-        AsyncOperation async = SceneManager.LoadSceneAsync(loadSceneName);
+        AsyncOperation async;
+        if (loadSceneName == null)
+        {
+            async = SceneManager.LoadSceneAsync(dondestroy.Instance.idx);
+        }
+        else
+        {
+            async = SceneManager.LoadSceneAsync(loadSceneName);
+        }
 
         float time = 0f;
         async.allowSceneActivation = false;

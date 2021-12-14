@@ -9,26 +9,20 @@ EditorBuildSettings:
     path: Assets/02.Scenes/TitleScene.unity
     guid: 2d1a6aa5affa98f48be87427068d2aeb
   - enabled: 1
-    path: Assets/02.Scenes/SampleScene.unity
-    guid: 3db1837cc97a95e4c98610966fac2b0b
+    path: Assets/02.Scenes/HighwayScene.unity
+    guid: 2ab2d13f39e80484cbb1d21fac4f3c5f
+  - enabled: 1
+    path: Assets/02.Scenes/Room_white.unity
+    guid: 9f326136c9b2e0c498de1ea06025e1dd
+  - enabled: 1
+    path: Assets/02.Scenes/HanokScene.unity
+    guid: c8a595e58e08fad4195b8d3b7f1951fe
   - enabled: 1
     path: Assets/02.Scenes/Playground.unity
     guid: 7578b3ca8a155d741a5a955f7f8edf17
   - enabled: 1
     path: Assets/02.Scenes/LoadingScene.unity
     guid: 91f75c8e7448b194286b07570984abf1
-  - enabled: 1
-    path: Assets/02.Scenes/HighwayScene.unity
-    guid: 2ab2d13f39e80484cbb1d21fac4f3c5f
-  - enabled: 1
-    path: Assets/02.Scenes/HanokScene.unity
-    guid: c8a595e58e08fad4195b8d3b7f1951fe
-  - enabled: 1
-    path: Assets/02.Scenes/New Scene.unity
-    guid: 422a8ceeeb2972842840d66170cfccd4
-  - enabled: 1
-    path: Assets/02.Scenes/Room_white.unity
-    guid: 9f326136c9b2e0c498de1ea06025e1dd
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fa07c068bd075154d84833ad54fd0b06, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: e4b5cf1aed12ec4448f4ae69cb6cd6b9, type: 2}

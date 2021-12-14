@@ -18,6 +18,7 @@ public class SubtitleProcess_6 : SubtitleProcess
 		base.StartOfEndProcess();
 		GameManager.instance.canMove = true;
 		GetComponent<InteractableObject>().canInteract = false;
+		StartCoroutine(StageQuest_6.Instance.HumanOn(gameObject.name));
 	}
 	protected override void EndOfEndProcess()
 	{

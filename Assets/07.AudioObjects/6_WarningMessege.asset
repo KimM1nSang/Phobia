@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: 6_WarningMessege
   m_EditorClassIdentifier: 
   clip: {fileID: 0}
-  subtitle: "<color=#ff0000>\uC5EC\uAE34 \uC2EB\uC5B4..</color>"
+  subtitle: "<color=#ff0000>\uC5EC\uAE34 \uC0AC\uB78C\uC774 \uB108\uBB34 \uB9CE\uC544..</color>"

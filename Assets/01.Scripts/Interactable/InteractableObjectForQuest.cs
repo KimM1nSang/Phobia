@@ -19,6 +19,7 @@ public class InteractableObjectForQuest : InteractableObject
                     PC_UI.Instance.AddQuestId(QuestId);
                 }
                 //퀘스트 추가하고 나서 탭 눌러도 추가 안되있음
+                if(GetComponent<SubtitleProcess>()!=null)
                 GetComponent<SubtitleProcess>().Processing();
             }
             else

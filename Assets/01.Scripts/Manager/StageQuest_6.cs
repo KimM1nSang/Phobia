@@ -14,6 +14,7 @@ public class StageQuest_6 : MonoBehaviour
     [SerializeField] GameObject[] playGround;
     [SerializeField] GameObject[] storyLight;
     [SerializeField] GameObject cabinet;
+    [SerializeField] GameObject[] ChatZone;
     public string questId;
     public string repetitionQuestId;
 
@@ -23,6 +24,9 @@ public class StageQuest_6 : MonoBehaviour
     private AudioObject[] afterDropObjects = null;
     [SerializeField]
     private AudioObject[] endObjects = null;
+
+    public GameObject[] humansList;
+    private Dictionary<string, GameObject> humansDic = new Dictionary<string, GameObject>();
 
 
     public static StageQuest_6 Instance { get; set; }
@@ -39,7 +43,15 @@ public class StageQuest_6 : MonoBehaviour
     }
     void Start()
     {
-        
+		for (int i = 0; i < humansList.Length; i++)
+		{
+            humansDic.Add(humansList[i].name, humansList[i].gameObject);
+
+        }
+		foreach (var item in humansDic)
+		{
+            print(item.Key);
+		}
     }
     public Action QuestCheck(int idx)
     {
@@ -50,6 +62,7 @@ public class StageQuest_6 : MonoBehaviour
             case 3: return Quest3;
             case 4: return Quest4;
             case 5: return Quest5;
+            case 6: return Quest6;
         }
         return null;
     }
@@ -59,6 +72,10 @@ public class StageQuest_6 : MonoBehaviour
 
     }
     public void Quest2()
+    {
+        StartCoroutine(Wait(quest2));
+    }
+    public void quest2()
     {
         print("2");
         Vocals.Instance.Processing(bucketBring);
@@ -82,19 +99,24 @@ public class StageQuest_6 : MonoBehaviour
     public void Quest4()
     {
         print("4");
-
-
-        for (int i = 0; i < 10; i++)
-		{
-            PC_UI.Instance.AddQuestId(repetitionQuestId);
-        }
         PC_UI.Instance.RefreshQuestList();
         Vocals.Instance.Processing(endObjects);
+        PC_UI.Instance.UpProgress(repetitionQuestId);
+		foreach (var item in ChatZone)
+		{
+            item.SetActive(true);
+		}
         StartCoroutine(LightOn());  
     }
     public void Quest5()
     {
         print("5");
+    }
+    public void Quest6()
+    {
+        print("6");
+        StartCoroutine(Wait(() => LoadSceneManager.LoadScene("Room_Scene"),10f));
+
     }
     public void UpProgress()
     {
@@ -111,4 +133,34 @@ public class StageQuest_6 : MonoBehaviour
         }
         cabinet.SetActive(true);
     }
+    public IEnumerator HumanOn(string objectName,float waitTime = 1f)
+    {
+        if (objectName == "Stand")
+        {
+            print("A");
+			foreach (var item in humansDic)
+			{
+                if(item.Key!="Stand")
+                item.Value.SetActive(false);
+			}
+        }
+        if (humansDic[objectName] != null)
+        {
+            print(objectName+"»ý¼º");
+            yield return new WaitForSeconds(2f);
+
+            for (int i = 0; i < humansDic[objectName].transform.childCount; i++)
+            {
+                yield return new WaitForSeconds(waitTime);
+                humansDic[objectName].transform.GetChild(i).transform.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public IEnumerator Wait(Action action,float waitTime = 2f)
+    {
+        yield return new WaitForSeconds(waitTime);
+        action();
+    }
+
 }

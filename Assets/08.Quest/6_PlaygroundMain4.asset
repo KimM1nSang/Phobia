@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d308a5733264acd47a7ec4392ef96041, type: 3}
   m_Name: 6_PlaygroundMain4
   m_EditorClassIdentifier: 
-  nextQuest: {fileID: 0}
+  nextQuest: {fileID: 11400000, guid: 458ad2b8d4254a7449d204ca09d78ede, type: 2}
   id: PlaygroundMain4
-  content: "<color=#ff0000>\uC5EC\uAE30\uC11C \uB098\uAC00\uC57C\uD574 \uC5EC\uAE30\uC11C
-    \uB098\uAC00\uC57C\uD574 \uC5EC\uAE30\uC11C \uB098\uAC00\uC57C\uD574 \uC5EC\uAE30\uC11C
-    \uB098\uAC00\uC57C\uD574\uC5EC\uAE30\uC11C \uB098\uAC00\uC57C\uD574 \uC5EC\uAE30\uC11C
-    \uB098\uAC00\uC57C\uD574 \uC5EC\uAE30\uC11C \uB098\uAC00\uC57C\uD574 \uC5EC\uAE30\uC11C
-    \uB098\uAC00\uC57C\uD574</color>"
+  content: "<color=#ff0000>\uC5EC\uAE30 \uC788\uAE30 \uC2EB\uC5B4 \uC5EC\uAE30 \uC788\uAE30
+    \uC2EB\uC5B4 \uC5EC\uAE30 \uC788\uAE30 \uC2EB\uC5B4 \uC5EC\uAE30 \uC788\uAE30
+    \uC2EB\uC5B4 \uC5EC\uAE30 \uC788\uAE30 \uC2EB\uC5B4 \uC5EC\uAE30 \uC788\uAE30
+    \uC2EB\uC5B4 \uC5EC\uAE30 \uC788\uAE30 \uC2EB\uC5B4 \uC5EC\uAE30 \uC788\uAE30
+    \uC2EB\uC5B4 \uC5EC\uAE30 \uC788\uAE30 \uC2EB\uC5B4 \uC5EC\uAE30 \uC788\uAE30
+    \uC2EB\uC5B4 \uC5EC\uAE30 \uC788\uAE30 \uC2EB\uC5B4 </color>"
   isDone: 0
   necProgress: 1
   progress: 0

@@ -7,6 +7,7 @@ public class ObjectDropPoint_6 : ObjectDropPoint
 	public override void OnDropObject()
 	{
 		base.OnDropObject();
-		Destroy(this.gameObject);
+		StartCoroutine(StageQuest_6.Instance.HumanOn("Stand", 0.5f));
+		//gameObject.SetActive(false);
 	}
 }
